@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)https://nctu-sslab.github.io/PP-f20/HW4/ -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Parallel Programming @ NCTU, Fall 2020 | This is the webpage for the Parallel Programming course</title>
+<meta name="generator" content="Jekyll v3.9.0">
+<meta property="og:title" content="Parallel Programming @ NCTU, Fall 2020">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="This is the webpage for the Parallel Programming course">
+<meta property="og:description" content="This is the webpage for the Parallel Programming course">
+<link rel="canonical" href="https://nctu-sslab.github.io/PP-f20/HW4/">
+<meta property="og:url" content="https://nctu-sslab.github.io/PP-f20/HW4/">
+<meta property="og:site_name" content="Parallel Programming @ NCTU, Fall 2020">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Parallel Programming @ NCTU, Fall 2020">
+<script type="application/ld+json">
+{"description":"This is the webpage for the Parallel Programming course","headline":"Parallel Programming @ NCTU, Fall 2020","url":"https://nctu-sslab.github.io/PP-f20/HW4/","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="./lab4_files/style.css">
+  <style shopback-extension-v6-5-2="" data-styled-version="4.2.0"></style><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax.MathJax_FullWidth {text-align: center; display: table-cell!important; width: 10000em!important}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none; box-sizing: content-box}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_test {font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow: hidden; height: 1px}
+.MathJax_test.mjx-test-display {display: table!important}
+.MathJax_test.mjx-test-inline {display: inline!important; margin-right: -1px}
+.MathJax_test.mjx-test-default {display: block!important; clear: both}
+.MathJax_ex_box {display: inline-block!important; position: absolute; overflow: hidden; min-height: 0; max-height: none; padding: 0; border: 0; margin: 0; width: 1px; height: 60ex}
+.MathJax_em_box {display: inline-block!important; position: absolute; overflow: hidden; min-height: 0; max-height: none; padding: 0; border: 0; margin: 0; width: 1px; height: 60em}
+.mjx-test-inline .MathJax_left_box {display: inline-block; width: 0; float: left}
+.mjx-test-inline .MathJax_right_box {display: inline-block; width: 0; float: right}
+.mjx-test-display .MathJax_right_box {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Main; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff?V=2.7.7') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf?V=2.7.7') format('opentype')}
+@font-face {font-family: MathJax_Main-bold; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff?V=2.7.7') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf?V=2.7.7') format('opentype')}
+@font-face {font-family: MathJax_Main-italic; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff?V=2.7.7') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf?V=2.7.7') format('opentype')}
+@font-face {font-family: MathJax_Math-italic; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff?V=2.7.7') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf?V=2.7.7') format('opentype')}
+@font-face {font-family: MathJax_Caligraphic; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff?V=2.7.7') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf?V=2.7.7') format('opentype')}
+@font-face {font-family: MathJax_Size1; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff?V=2.7.7') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf?V=2.7.7') format('opentype')}
+@font-face {font-family: MathJax_Size2; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff?V=2.7.7') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf?V=2.7.7') format('opentype')}
+@font-face {font-family: MathJax_Size3; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff?V=2.7.7') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf?V=2.7.7') format('opentype')}
+@font-face {font-family: MathJax_Size4; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff?V=2.7.7') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf?V=2.7.7') format('opentype')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+  <body><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div id="MathJax_Message" style="display: none;"></div>
+    <section class="page-header">
+      <h1 class="project-name">Parallel Programming @ NCTU, Fall 2020</h1>
+      <h2 class="project-tagline">This is the webpage for the Parallel Programming course</h2>
+      
+        <a href="https://github.com/nctu-sslab/PP-f20" class="btn">View on GitHub</a>
+      
+      
+    </section>
+
+    <section class="main-content has-jax has-jax">
+      <script type="text/javascript" src="./lab4_files/MathJax.js.下載" async=""> </script>
+<script type="text/x-mathjax-config;executed=true"> MathJax.Hub.Config({'HTML-CSS': { preferredFont: 'TeX', availableFonts: ['STIX','TeX'], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) }, tex2jax: { inlineMath: [ ['$', '$'] ], processEscapes: true, ignoreClass: 'tex2jax_ignore|dno',skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']}, TeX: {  noUndefined: { attributes: { mathcolor: 'red', mathbackground: '#FFEEEE', mathsize: '90%' } }, Macros: { href: '{}' } }, messageStyle: 'none' }); MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i=0; i < all.length; i += 1) { all[i].SourceElement().parentNode.className += ' has-jax'; } }); </script>
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TP966Z8H9W"></script>
+<script> window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-TP966Z8H9W',{'page_path': location.pathname + location.search + location.hash}); </script>
+
+<!-- From: https://kth.instructure.com/courses/17065/assignments/108322 -->
+
+<h1 id="assignment-iv-mpi-programming">Assignment IV: MPI Programming</h1>
+
+<p>The purpose of this assignment is to familiarize yourself with MPI programming.</p>
+
+<h2 id="0-setting-up-the-environment">0. Setting Up the Environment</h2>
+
+<h3 id="01-creating-a-working-directory-on-nfs">0.1 Creating a working directory on NFS</h3>
+
+<p>If you have not created a working directory (named with your student ID) for your own, please follow the commands below:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> /nfs
+<span class="nv">$ </span><span class="nb">mkdir </span>xxxxxxx <span class="c"># your student ID</span>
+<span class="nv">$ </span><span class="nb">chmod </span>700 xxxxxxx <span class="c"># make it safe</span>
+</code></pre></div></div>
+
+<h3 id="02-downloading-the-source-code">0.2 Downloading the Source Code:</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> /nfs/&lt;student_id&gt;
+<span class="nv">$ </span>wget https://nctu-sslab.github.io/PP-f20/HW4/HW4.zip
+<span class="nv">$ </span>unzip HW4.zip <span class="nt">-d</span> HW4
+<span class="nv">$ </span><span class="nb">chmod</span> <span class="nt">-R</span> 700 HW4
+<span class="nv">$ </span><span class="nb">cd </span>HW4
+</code></pre></div></div>
+
+<h3 id="03-configuring-ssh">0.3 Configuring SSH</h3>
+<p>To make MPI work properly, you need to be able to execute jobs on remote nodes without typing a password. You will need to generate an ssh key by yourself. You may refer to <a href="http://linuxproblem.org/art_9.html">this article</a> for instruction or follow the instructions below.</p>
+
+<p>You will also need to configure your <code class="language-plaintext highlighter-rouge">~/.ssh/config</code> file to define host names. Use <code class="language-plaintext highlighter-rouge">HW4/config</code> as a template for the configuration. Notice that in the configuration template, the string follows each <code class="language-plaintext highlighter-rouge">User</code> should be your student ID.</p>
+
+<p><strong>ATTENTION: We will test your code based on this config.</strong></p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># &lt;login to one of the PP nodes&gt;</span>
+<span class="nv">$ </span><span class="nb">mkdir</span> <span class="nt">-p</span> ~/.ssh
+<span class="nv">$ </span>ssh-keygen <span class="nt">-t</span> rsa <span class="c"># Leave all empty</span>
+<span class="c"># &lt;setup the config&gt;</span>
+<span class="nv">$ </span><span class="nb">cat</span> ~/.ssh/id_rsa.pub | ssh ppN <span class="s1">'mkdir -p ~/.ssh; cat &gt;&gt; .ssh/authorized_keys'</span> <span class="c"># ppN should be pp1, pp2, ..., pp9</span>
+</code></pre></div></div>
+
+<p>Then, login to all machines at least once to make sure the configuration works. This will save the SSH fingerprints of the machines in <code class="language-plaintext highlighter-rouge">~/.ssh/known_hosts</code>.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Log in without entering password</span>
+<span class="nv">$ </span>ssh pp1
+<span class="nv">$ </span>ssh pp2
+<span class="nv">$ </span>ssh pp3
+<span class="nv">$ </span>ssh pp4
+<span class="nv">$ </span>...
+<span class="nv">$ </span>ssh pp9
+</code></pre></div></div>
+
+<h3 id="04-about-network-connections">0.4 About Network Connections</h3>
+
+<p>There are in total nine compute nodes within two private networks.</p>
+
+<p><code class="language-plaintext highlighter-rouge">pp1</code>-<code class="language-plaintext highlighter-rouge">pp5</code> are in a private network, which we will use for the grading process.</p>
+
+<p><code class="language-plaintext highlighter-rouge">pp6</code>-<code class="language-plaintext highlighter-rouge">pp9</code> are in the other private network, which provides an alternative environment for testing your MPI programs if the nodes in the first private network are busy.</p>
+
+<p>In this assignment, your MPI programs are expected to run in the same private network; that is, issues of interconnection between private networks are not, and should not, considered in this assignment.</p>
+
+<h2 id="1-part-one-getting-familiar-with-mpi-programming">1. Part One: Getting Familiar with MPI Programming</h2>
+
+<h3 id="11-mpi-hello-world-getting-familiar-with-the-mpi-environment">1.1 MPI Hello World, Getting Familiar with the MPI Environment</h3>
+
+<p>Here we’re going to implement our first MPI program.</p>
+
+<p>Expected knowledge includes basic understanding of the MPI environment, how to compile an MPI program, how to set the number of MPI processes, and retrieve the rank of the process and number of MPI processes at runtime.</p>
+
+<p>Let’s learn how to launch an MPI code on NCTU-PP workstations.</p>
+
+<p>There is a starter code for you. Look at <code class="language-plaintext highlighter-rouge">hello.cc</code>. Please finish the _TODO_s with the <code class="language-plaintext highlighter-rouge">MPI_Comm_size</code> and <code class="language-plaintext highlighter-rouge">MPI_Comm_rank</code> functions.</p>
+
+<p>We will work on NFS, so we don’t need to copy and compile the code again and again on different nodes.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> /nfs/&lt;student_id&gt;
+</code></pre></div></div>
+
+<p>Let’s first compile <code class="language-plaintext highlighter-rouge">hello.cc</code> on NFS:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> ./HW4
+<span class="nv">$ </span>mpicxx ./hello.cc <span class="nt">-o</span> mpi_hello
+</code></pre></div></div>
+
+<p>Then create a file <code class="language-plaintext highlighter-rouge">hosts</code>, which is a text file with hosts specified, one per line.
+We will use the file to specify on which hosts to launch MPI processes when running <code class="language-plaintext highlighter-rouge">mpirun</code>.
+For example, we put the following two lines into the file to specify we will launch MPI processes on nodes <code class="language-plaintext highlighter-rouge">pp1</code> and <code class="language-plaintext highlighter-rouge">pp2</code>.
+Notice that you should use the same hostnames as in <code class="language-plaintext highlighter-rouge">~/.ssh/config</code>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">hosts</code>:</p>
+
+<div class="language-config highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pp1</span> <span class="c"># 1st node hostname
+</span><span class="n">pp2</span> <span class="c"># 2ed node hostname
+</span></code></pre></div></div>
+
+<blockquote>
+  <p>Notice that the nodes should be in the same private network (using either <code class="language-plaintext highlighter-rouge">pp1</code>-<code class="language-plaintext highlighter-rouge">pp5</code> or <code class="language-plaintext highlighter-rouge">pp6</code>-<code class="language-plaintext highlighter-rouge">pp9</code>).</p>
+</blockquote>
+
+<p>Make sure <code class="language-plaintext highlighter-rouge">mpi_hello</code> is located in the same directory hierarchy on the two nodes (should not be a problem under NFS) before running <code class="language-plaintext highlighter-rouge">mpirun</code> to start MPI processes:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>mpirun <span class="nt">-np</span> 8 <span class="nt">--hostfile</span> hosts mpi_hello
+</code></pre></div></div>
+
+<p>This command will launch eight processes to run <code class="language-plaintext highlighter-rouge">mpi_hello</code> on the two nodes, and you should be able to get an output similar to:</p>
+
+<pre><code class="language-log">Hello world from processor ec037-076, rank 0 out of 8 processors
+Hello world from processor ec037-076, rank 1 out of 8 processors
+Hello world from processor ec037-076, rank 3 out of 8 processors
+Hello world from processor ec037-076, rank 2 out of 8 processors
+Hello world from processor ec037-077, rank 4 out of 8 processors
+Hello world from processor ec037-077, rank 6 out of 8 processors
+Hello world from processor ec037-077, rank 5 out of 8 processors
+Hello world from processor ec037-077, rank 7 out of 8 processors
+</code></pre>
+
+<p><strong>Code Implementation</strong>:  (<em>3 points</em>)</p>
+<ul>
+  <li>Complete <code class="language-plaintext highlighter-rouge">hello.cc</code>: the Hello World code in C.</li>
+  <li><code class="language-plaintext highlighter-rouge">mpirun -np 8 --hostfile hosts mpi_hello</code> should run correctly</li>
+  <li>The argument of <code class="language-plaintext highlighter-rouge">-np</code> is expected to be any positive integer less than or equal to 16.</li>
+</ul>
+
+<p><strong>Q1</strong> (<em>3 points</em>)</p>
+<ol>
+  <li>How do you control the number of MPI processes on each node? (<em>1 points</em>)</li>
+  <li>Which functions do you use for retrieving the rank of an MPI process and the total number of processes? (<em>1 points</em>)</li>
+  <li>We use Open MPI for this assignment. What else MPI implementation is commonly used? What is the difference between them? (<em>1 points</em>)</li>
+</ol>
+
+<h3 id="12-calculating-pi-with-mpi">1.2 Calculating PI with MPI</h3>
+
+<p>In this exercise, we are going to parallelize the calculation of Pi following a Monte Carlo method and using different communication functions and measure their performance.</p>
+
+<p>Expected knowledge is MPI blocking and non-blocking communication, collective operations, and one-sided communication.</p>
+
+<p><strong>Instructions</strong>: Write different versions of MPI codes to calculate Pi. The technique we are implementing relies on random sampling to obtain numerical results. You have already implemented this in the previous assignments.</p>
+
+<h4 id="121--mpi-blocking-communication--linear-reduction-algorithm">1.2.1  MPI Blocking Communication &amp; Linear Reduction Algorithm</h4>
+
+<p>In our parallel implementation, we split the number of iterations of the main loop into all the processes (i.e., <code class="language-plaintext highlighter-rouge">NUM_ITER / num_ranks</code>). Each process will calculate an intermediate <code class="language-plaintext highlighter-rouge">count</code>, which is going to be used afterward to calculate the final value of Pi.</p>
+
+<p>To calculate Pi, you need to send all the intermediate counts of each process to rank 0. This communication algorithm for reduction operation is called linear as the communication costs scales as the number of processes.</p>
+
+<p>An example of linear reduction with eight processes is as follows:</p>
+
+<p><img src="./lab4_files/96628318-aa40a800-1344-11eb-9d79-eff7988c2f15.png" alt="image"></p>
+
+<p>Rank 0 is going to receive the intermediate <code class="language-plaintext highlighter-rouge">count</code> calculated by each process and accumulate them to its own count value. (Rank 0 also needs to calculate a <code class="language-plaintext highlighter-rouge">count</code>, and this stands for the following sections in Part One.) Finally, after rank 0 has received and accumulated all the intermediate counts, it will calculate Pi and show the result, as in the original code.</p>
+
+<p>Implement this code using blocking communication and test its performance.</p>
+
+<blockquote>
+  <p><em>Hint</em> 1. Change the main loop to include the number of iterations per process, and not <code class="language-plaintext highlighter-rouge">NUM_ITER</code> (which is the total number of iterations).</p>
+
+  <p><em>Hint</em> 2. Do not forget to multiply the seed of <code class="language-plaintext highlighter-rouge">srand()</code> with the rank of each process (e.g., “rank * SEED”) to ensure the RNGs of processes generate different random numbers.</p>
+</blockquote>
+
+<p>There is a starter code <code class="language-plaintext highlighter-rouge">pi_block_linear.cc</code> for you.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>mpicxx pi_block_linear.cc <span class="nt">-o</span> pi_block_linear<span class="p">;</span> mpirun <span class="nt">-np</span> 4 <span class="nt">--hostfile</span> hosts pi_block_linear 1000000000
+</code></pre></div></div>
+
+<p><strong>Code Implementation</strong>: (<em>7 points</em>)</p>
+<ul>
+  <li>Complete <code class="language-plaintext highlighter-rouge">pi_block_linear.cc</code>: the MPI block communication for PI.</li>
+  <li>Implement the code using a <strong>linear algorithm</strong> with <code class="language-plaintext highlighter-rouge">MPI_Send</code>/<code class="language-plaintext highlighter-rouge">MPI_Recv</code>.</li>
+  <li>Do not modify the output messages.</li>
+  <li><code class="language-plaintext highlighter-rouge">$ mpicxx pi_block_linear.cc -o pi_block_linear; mpirun -np 4 --hostfile hosts pi_block_linear 1000000000</code> should run correctly.</li>
+  <li>The argument of <code class="language-plaintext highlighter-rouge">-np</code> is expected to be any positive integer less than or equal to 16.</li>
+  <li><code class="language-plaintext highlighter-rouge">mpirun -np 4 --hostfile hosts pi_block_linear 1000000000</code> should run almost as fast as TA’s reference version (refer to <code class="language-plaintext highlighter-rouge">/nfs/ref</code>). The difference (in execution time) should be within 15%.</li>
+</ul>
+
+<blockquote>
+  <p>You may use up to five nodes (and up to four processors in each node) for Part One, so you may want to try different configurations in the hostfile.</p>
+</blockquote>
+
+<p><strong>Q2</strong> (<em>2 points</em>)</p>
+<ol>
+  <li>Why <code class="language-plaintext highlighter-rouge">MPI_Send</code> and <code class="language-plaintext highlighter-rouge">MPI_Recv</code> are called “blocking” communication? (<em>1 points</em>)</li>
+  <li>Measure the performance (execution time) of the code for 2, 4, 8, 12, 16 MPI processes and plot it. (<em>1 points</em>)</li>
+</ol>
+
+<h4 id="122-mpi-blocking-communication--binary-tree-reduction-communication-algorithm">1.2.2 MPI Blocking Communication &amp; Binary Tree Reduction Communication Algorithm</h4>
+
+<p>Implement the binary tree communication algorithm for performing the reduction on rank 0 using blocking communication (e.g., <code class="language-plaintext highlighter-rouge">MPI_Send</code>/<code class="language-plaintext highlighter-rouge">MPI_Recv</code>).</p>
+
+<p>The communication pattern for a reduction with a binary tree with eight processes is as follows:</p>
+
+<p><img src="./lab4_files/96628491-e116be00-1344-11eb-94b4-2b19a62fa016.png" alt="image"></p>
+
+<p>In you implementation, you can assume that we use a power-of-two number of processes.</p>
+
+<p>There is a starter code <code class="language-plaintext highlighter-rouge">pi_block_tree.cc</code> for you.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>mpicxx pi_block_tree.cc <span class="nt">-o</span> pi_block_tree<span class="p">;</span> mpirun <span class="nt">-np</span> 4 <span class="nt">--hostfile</span> hosts pi_block_tree 1000000000
+</code></pre></div></div>
+
+<p><strong>Code Implementation</strong>: (<em>7 points</em>)</p>
+<ul>
+  <li>Complete <code class="language-plaintext highlighter-rouge">pi_block_tree.cc</code>: the MPI block communication for PI.</li>
+  <li>Implement the code using a <strong>binary tree reduction algorithm</strong> with <code class="language-plaintext highlighter-rouge">MPI_Send</code>/<code class="language-plaintext highlighter-rouge">MPI_Recv</code>.</li>
+  <li>Do not modify the output messages.</li>
+  <li><code class="language-plaintext highlighter-rouge">$ mpicxx pi_block_tree.cc -o pi_block_tree; mpirun -np 4 --hostfile hosts pi_block_tree 1000000000</code> should run correctly.</li>
+  <li>The argument of <code class="language-plaintext highlighter-rouge">-np</code> is expected to be any power-of-two number less than or equal to 16.</li>
+  <li><code class="language-plaintext highlighter-rouge">mpirun -np 4 --hostfile hosts pi_block_tree 1000000000</code> should run almost as fast as TA’s reference version. The difference (in execution time) should be within 15%.</li>
+</ul>
+
+<p><strong>Q3</strong> (<em>6 points</em>)</p>
+<ol>
+  <li>Measure the performance (execution time) of the code for 2, 4, 8, 16 MPI processes and plot it. (<em>1 points</em>)</li>
+  <li>How does the performance of binary tree reduction compare to the performance of linear reduction? (<em>2 points</em>)</li>
+  <li>Increasing the number of processes, which approach (linear/tree) is going to perform better? Why? Think about the number of messages and their costs. (<em>3 points</em>)</li>
+</ol>
+
+<h4 id="123--mpi-non-blocking-communication--linear-reduction-algorithm">1.2.3  MPI Non-Blocking Communication &amp; Linear Reduction Algorithm</h4>
+
+<p>Use non-blocking communication for the linear reduction operation (in Section <a href="https://nctu-sslab.github.io/PP-f20/HW4/#121--mpi-blocking-communication--linear-reduction-algorithm">1.2.1</a>).</p>
+
+<blockquote>
+  <p><em>Hint</em>: Use a non-blocking <code class="language-plaintext highlighter-rouge">MPI_Irecv()</code> (MPI Receive with Immediate return). The basic idea is that rank 0 is going to issue all the receive operations and then wait for them to finish. You can either use <code class="language-plaintext highlighter-rouge">MPI_Wait()</code> individually to wait for each request to finish or <code class="language-plaintext highlighter-rouge">MPI_Waitall()</code>. Regardless of your decision, keep in mind that we want you to perform the receive operations in parallel. Thus, do not call <code class="language-plaintext highlighter-rouge">MPI_Irecv()</code> and immediately <code class="language-plaintext highlighter-rouge">MPI_Wait()</code>! In addition, we recommend you allocate an array of <code class="language-plaintext highlighter-rouge">MPI_Request</code> and also an array of counts (i.e., one for each receive needed).</p>
+</blockquote>
+
+<p>There is a starter code <code class="language-plaintext highlighter-rouge">pi_nonblock_linear.cc</code> for you.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>mpicxx pi_nonblock_linear.cc <span class="nt">-o</span> pi_nonblock_linear<span class="p">;</span> mpirun <span class="nt">-np</span> 4 <span class="nt">--hostfile</span> hosts pi_nonblock_linear 1000000000
+</code></pre></div></div>
+
+<p><strong>Code Implementation</strong>: (<em>7 points</em>)</p>
+<ul>
+  <li>Complete <code class="language-plaintext highlighter-rouge">pi_nonblock_linear.cc</code>: the MPI non-blocking communication for PI.</li>
+  <li>Implement the code using a <strong>non-blocking algorithm</strong> with <code class="language-plaintext highlighter-rouge">MPI_Send</code>/<code class="language-plaintext highlighter-rouge">MPI_IRecv</code>/<code class="language-plaintext highlighter-rouge">MPI_Wait</code>/<code class="language-plaintext highlighter-rouge">MPI_Waitall</code>.</li>
+  <li>Do not modify the output messages.</li>
+  <li><code class="language-plaintext highlighter-rouge">$ mpicxx pi_nonblock_linear.cc -o pi_nonblock_linear; mpirun -np 4 --hostfile hosts pi_nonblock_linear 1000000000</code> should run correctly.</li>
+  <li>The argument of <code class="language-plaintext highlighter-rouge">-np</code> is expected to be any positive integer less than or equal to 16.</li>
+  <li><code class="language-plaintext highlighter-rouge">mpirun -np 4 --hostfile hosts pi_nonblock_linear 1000000000</code> should run almost as fast as TA’s reference version. The difference (in execution time) should be within 15%.</li>
+</ul>
+
+<p><strong>Q4</strong> (<em>5 points</em>)</p>
+<ol>
+  <li>Measure the performance (execution time) of the code for 2, 4, 8, 12, 16 MPI processes and plot it. (<em>1 points</em>)</li>
+  <li>What are the MPI functions for non-blocking communication? (<em>1 points</em>)</li>
+  <li>How the performance of non-blocking communication compares to the performance of blocking communication? (<em>3 points</em>)</li>
+</ol>
+
+<h4 id="124-mpi-collective-mpi_gather">1.2.4 MPI Collective: MPI_Gather</h4>
+
+<p>Use the collective <code class="language-plaintext highlighter-rouge">MPI_Gather()</code> operation, instead of point-to-point communication.</p>
+
+<p><em>Hint</em>: You can keep rank 0 as the root of the communication and still make this process aggregate manually the intermediate counts. Remember that the goal of <code class="language-plaintext highlighter-rouge">MPI_Gather()</code> is to provide the root with an array of all the intermediate values. Reuse the array of counts as the output for the gather operation.</p>
+
+<p>There is a starter code <code class="language-plaintext highlighter-rouge">pi_gather.cc</code> for you.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>mpicxx pi_gather.cc <span class="nt">-o</span> pi_gather<span class="p">;</span> mpirun <span class="nt">-np</span> 4 <span class="nt">--hostfile</span> hosts pi_gather 1000000000
+</code></pre></div></div>
+
+<p><strong>Code Implementation</strong>: (<em>7 points</em>)</p>
+<ul>
+  <li>Complete <code class="language-plaintext highlighter-rouge">pi_gather.cc</code>: the MPI gather communication for PI.</li>
+  <li>Implement the code using <code class="language-plaintext highlighter-rouge">MPI_Gather</code>.</li>
+  <li>Do not modify the output messages.</li>
+  <li><code class="language-plaintext highlighter-rouge">$ mpicxx pi_gather.cc -o pi_gather; mpirun -np 4 --hostfile hosts pi_gather 1000000000</code> should run correctly.</li>
+  <li>The argument of <code class="language-plaintext highlighter-rouge">-np</code> is expected to be any positive integer less than or equal to 16.</li>
+  <li><code class="language-plaintext highlighter-rouge">mpirun -np 4 --hostfile hosts pi_gather 1000000000</code> should run almost as fast as TA’s reference version. The difference (in execution time) should be within 15%.</li>
+</ul>
+
+<p><strong>Q5</strong> (<em>1 points</em>)</p>
+<ol>
+  <li>Measure the performance (execution time) of the code for 2, 4, 8, 12, 16 MPI processes and plot it. (<em>1 points</em>)</li>
+</ol>
+
+<h4 id="125-mpi-collective-mpi_reduce">1.2.5 MPI Collective: MPI_Reduce</h4>
+
+<p>Use the collective <code class="language-plaintext highlighter-rouge">MPI_Reduce()</code> operation.</p>
+
+<blockquote>
+  <p><em>Hint</em> 1: Remember that the goal of <code class="language-plaintext highlighter-rouge">MPI_Reduce()</code> is to perform a collective computation. Use the <code class="language-plaintext highlighter-rouge">MPI_SUM</code> operator to aggregate all the intermediate count values into rank 0, But, watch out: rank 0 has to provide its own count as well, alongside the one from the other processes.</p>
+
+  <p><em>Hint</em> 2: The send buffer of <code class="language-plaintext highlighter-rouge">MPI_Reduce()</code> must not match the receive buffer. In other words, use a different variable on rank 0 to store the result.</p>
+</blockquote>
+
+<p>There is a starter code <code class="language-plaintext highlighter-rouge">pi_reduce.cc</code> for you.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>mpicxx pi_reduce.cc <span class="nt">-o</span> pi_reduce<span class="p">;</span> mpirun <span class="nt">-np</span> 4 <span class="nt">--hostfile</span> hosts pi_reduce 1000000000
+</code></pre></div></div>
+
+<p><strong>Code Implementation</strong>: (<em>7 points</em>)</p>
+<ul>
+  <li>Complete <code class="language-plaintext highlighter-rouge">pi_reduce.cc</code>: the MPI reduce communication for PI.</li>
+  <li>Implement the code using <code class="language-plaintext highlighter-rouge">MPI_Reduce</code>.</li>
+  <li>Do not modify the output messages.</li>
+  <li><code class="language-plaintext highlighter-rouge">$ mpicxx pi_reduce.cc -o pi_reduce; mpirun -np 4 --hostfile hosts pi_reduce 1000000000</code> should run correctly.</li>
+  <li>The argument of <code class="language-plaintext highlighter-rouge">-np</code> is expected to be any positive integer less than or equal to 16.</li>
+  <li><code class="language-plaintext highlighter-rouge">mpirun -np 4 --hostfile hosts pi_reduce 1000000000</code> should run almost as fast as TA’s reference version. The difference (in execution time) should be within 15%.</li>
+</ul>
+
+<p><strong>Q6</strong> (<em>1 points</em>)</p>
+<ol>
+  <li>Measure the performance (execution time) of the code for 2, 4, 8, 12, 16 MPI processes and plot it. (<em>1 points</em>)</li>
+</ol>
+
+<h4 id="126-mpi-windows-and-one-sided-communication--linear-reduction-algorithm">1.2.6 MPI Windows and One-Sided Communication &amp; Linear Reduction Algorithm</h4>
+
+<p>Use MPI Windows and MPI one-sided communication, which we didn’t cover this in class. You can choose the functions you’d like to use but remember that there is a reduction on the same MPI window from many processes! You may refer to <code class="language-plaintext highlighter-rouge">one_side_example.c</code> to get familiar with it.</p>
+
+<p>There is a starter code <code class="language-plaintext highlighter-rouge">pi_one_side.cc</code> for you.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>mpicxx pi_one_side.cc <span class="nt">-o</span> pi_one_side<span class="p">;</span> mpirun <span class="nt">-np</span> 4 <span class="nt">--hostfile</span> hosts pi_one_side 1000000000
+</code></pre></div></div>
+
+<p><strong>Code Implementation</strong>: (<em>7 points</em>)</p>
+<ul>
+  <li>Complete <code class="language-plaintext highlighter-rouge">pi_one_side.cc</code>: the MPI one sided communication for PI.</li>
+  <li>Implement the code using <code class="language-plaintext highlighter-rouge">MPI_Widows_*</code> (or <code class="language-plaintext highlighter-rouge">MPI_Put</code>, <code class="language-plaintext highlighter-rouge">MPI_Get</code>, and <code class="language-plaintext highlighter-rouge">MPI_Accumulate</code>). You only need to implement the first one, and the remainings are optional.</li>
+  <li>Do not modify the output messages.</li>
+  <li><code class="language-plaintext highlighter-rouge">$ mpicxx pi_one_side.cc -o pi_one_side; mpirun -np 4 --hostfile hosts pi_one_side 1000000000</code> should run correctly.</li>
+  <li>The argument of <code class="language-plaintext highlighter-rouge">-np</code> is expected to be any positive integer less than or equal to 16.</li>
+  <li><code class="language-plaintext highlighter-rouge">mpirun -np 4 --hostfile hosts pi_one_side 1000000000</code> should run almost as fast as TA’s reference version. The difference (in execution time) should be within 15%.</li>
+</ul>
+
+<p><strong>Q7</strong> (<em>5 points</em>)</p>
+<ol>
+  <li>Measure the performance (execution time) of the code for 2, 4, 8, 12, 16 MPI processes and plot it. (<em>1 points</em>)</li>
+  <li>Which approach gives the best performance among the <strong><a href="https://nctu-sslab.github.io/PP-f20/HW4/#121--mpi-blocking-communication--linear-reduction-algorithm">1.2.1</a></strong>-<strong><a href="https://nctu-sslab.github.io/PP-f20/HW4/#126---mpi-windows-and-one-sided-communication--linear-reduction-algorithm">1.2.6</a></strong> cases? What is the reason for that? (<em>3 points</em>)</li>
+  <li>Which algorithm or algorithms do MPI implementations use for reduction operations? You can research this on the WEB focusing on one MPI implementation. (<em>1 points</em>)</li>
+</ol>
+
+<h3 id="13-measuring-bandwidth-and-latency-on-nctu-pp-workstations-with-ping-pong">1.3 Measuring Bandwidth and Latency on NCTU-PP workstations with Ping-Pong</h3>
+
+<p>Expected knowledge is concepts of bandwidth and latency and performance model for parallel communication.</p>
+
+<p>The ping-pong is a benchmark code to measure the bandwidth and latency of a supercomputer. In this benchmark, two MPI processes use <code class="language-plaintext highlighter-rouge">MPI_Send</code> and <code class="language-plaintext highlighter-rouge">MPI_Recv</code> to continually bounce messages off of each other until a final limit.</p>
+
+<p>The ping-pong benchmark provides as output the average time for the ping-pong for different messages sizes.</p>
+
+<p>If we plot the results of the ping-pong with size on the x-axis and ping-pong time on the y-axis, we will roughly obtain points distributed along a line. If we do a linear best fit of the obtained points, we will get the intercept and the slope of the line. The inverse of the line slope is the bandwidth while the intercept is the latency of the system.</p>
+
+<p>We will use <code class="language-plaintext highlighter-rouge">ping_pong.c</code> to measure the ping-pong time for different message sizes.</p>
+
+<p><strong>Instructions</strong>.  For completing this exercise, you may refer to this video: <a href="https://www.youtube.com/watch?v=1J1aURqnwt4">Performance Modeling &amp; Ping-Pong</a></p>
+
+<p>Run the ping-pong code and calculate the bandwidth and latency for:</p>
+<ul>
+  <li>case 1: intra-node communication  (two processes on the same node), and</li>
+  <li>case 2: inter-node communication (two processes on different nodes). You should consider more different nodes in this case.</li>
+</ul>
+
+<p><strong>Q8</strong> (<em>9 points</em>)</p>
+<ol>
+  <li>Plot ping-pong time in function of the message size for cases 1 and 2, respectively. (<em>2 points</em>)</li>
+  <li>Calculate the bandwidth and latency for cases 1 and 2, respectively.  (<em>3 points</em>)</li>
+  <li>For case 2, how do the obtained values of bandwidth and latency compare to the nominal network bandwidth and latency of the NCTU-PP workstations. What are the differences and what could be the explanation of the differences if any?  (<em>4 points</em>)</li>
+</ol>
+
+<h2 id="2-part-two-matrix-multiplication-with-mpi">2. Part Two: Matrix Multiplication with MPI</h2>
+
+<p class=" has-jax has-jax has-jax has-jax has-jax has-jax has-jax">Write a MPI program which reads an <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-1-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;&amp;#x00D7;&lt;/mo&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-1" style="width: 3.347em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.706em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.743em, 1002.71em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-2"><span class="mi" id="MathJax-Span-3" style="font-family: MathJax_Math-italic;">n</span><span class="mo" id="MathJax-Span-4" style="font-family: MathJax_Main; padding-left: 0.231em;">×</span><span class="mi" id="MathJax-Span-5" style="font-family: MathJax_Math-italic; padding-left: 0.231em;">m</span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 0.741em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>×</mo><mi>m</mi></math></span></span><script type="math/tex" id="MathJax-Element-1">n \times m</script> matrix <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-2-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-6" style="width: 0.919em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.735em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.514em, 1000.69em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-7"><span class="mi" id="MathJax-Span-8" style="font-family: MathJax_Math-italic;">A</span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 1.026em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi></math></span></span><script type="math/tex" id="MathJax-Element-2">A</script> and an <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-3-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mo&gt;&amp;#x00D7;&lt;/mo&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-9" style="width: 3.026em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.431em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.56em, 1002.38em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-10"><span class="mi" id="MathJax-Span-11" style="font-family: MathJax_Math-italic;">m</span><span class="mo" id="MathJax-Span-12" style="font-family: MathJax_Main; padding-left: 0.231em;">×</span><span class="mi" id="MathJax-Span-13" style="font-family: MathJax_Math-italic; padding-left: 0.231em;">l</span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 0.969em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>m</mi><mo>×</mo><mi>l</mi></math></span></span><script type="math/tex" id="MathJax-Element-3">m \times l</script> matrix <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-4-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;B&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-14" style="width: 0.965em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.781em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.56em, 1000.78em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-15"><span class="mi" id="MathJax-Span-16" style="font-family: MathJax_Math-italic;">B</span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 0.969em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>B</mi></math></span></span><script type="math/tex" id="MathJax-Element-4">B</script>, and prints their product, which is stored in an <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-5-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;&amp;#x00D7;&lt;/mo&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-17" style="width: 2.614em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.11em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.56em, 1002.06em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-18"><span class="mi" id="MathJax-Span-19" style="font-family: MathJax_Math-italic;">n</span><span class="mo" id="MathJax-Span-20" style="font-family: MathJax_Main; padding-left: 0.231em;">×</span><span class="mi" id="MathJax-Span-21" style="font-family: MathJax_Math-italic; padding-left: 0.231em;">l</span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 0.969em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>×</mo><mi>l</mi></math></span></span><script type="math/tex" id="MathJax-Element-5">n \times l</script> matrix <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-6-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;C&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-22" style="width: 0.965em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.781em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.56em, 1000.78em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-23"><span class="mi" id="MathJax-Span-24" style="font-family: MathJax_Math-italic;">C<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.048em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 1.026em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>C</mi></math></span></span><script type="math/tex" id="MathJax-Element-6">C</script>. An element of matrix <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-7-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;C&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-25" style="width: 0.965em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.781em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.56em, 1000.78em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-26"><span class="mi" id="MathJax-Span-27" style="font-family: MathJax_Math-italic;">C<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.048em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 1.026em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>C</mi></math></span></span><script type="math/tex" id="MathJax-Element-7">C</script> is obtained by the following formula:</p>
+
+<span class="MathJax_Preview" style="color: inherit;"></span><div class="MathJax_Display" style="text-align: center;"><span class="MathJax" id="MathJax-Element-8-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot;&gt;&lt;msub&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;munderover&gt;&lt;mo&gt;&amp;#x2211;&lt;/mo&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/mrow&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;/munderover&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;msub&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;/math&gt;" role="presentation" style="text-align: center; position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-28" style="width: 7.975em; display: inline-block;"><span style="display: inline-block; position: relative; width: 6.417em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(0.69em, 1006.42em, 3.76em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-29"><span class="msubsup" id="MathJax-Span-30"><span style="display: inline-block; position: relative; width: 1.056em; height: 0px;"><span style="position: absolute; clip: rect(3.393em, 1000.41em, 4.126em, -999.998em); top: -3.984em; left: 0em;"><span class="mi" id="MathJax-Span-31" style="font-family: MathJax_Math-italic;">c</span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span><span style="position: absolute; top: -3.847em; left: 0.415em;"><span class="texatom" id="MathJax-Span-32"><span class="mrow" id="MathJax-Span-33"><span class="mi" id="MathJax-Span-34" style="font-size: 70.7%; font-family: MathJax_Math-italic;">i</span><span class="mi" id="MathJax-Span-35" style="font-size: 70.7%; font-family: MathJax_Math-italic;">j</span></span></span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span></span></span><span class="mo" id="MathJax-Span-36" style="font-family: MathJax_Main; padding-left: 0.277em;">=</span><span class="munderover" id="MathJax-Span-37" style="padding-left: 0.277em;"><span style="display: inline-block; position: relative; width: 1.469em; height: 0px;"><span style="position: absolute; clip: rect(2.889em, 1001.38em, 4.584em, -999.998em); top: -3.984em; left: 0em;"><span class="mo" id="MathJax-Span-38" style="font-family: MathJax_Size2; vertical-align: 0em;">∑</span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span><span style="position: absolute; clip: rect(3.347em, 1001.24em, 4.218em, -999.998em); top: -2.884em; left: 0.094em;"><span class="texatom" id="MathJax-Span-39"><span class="mrow" id="MathJax-Span-40"><span class="mi" id="MathJax-Span-41" style="font-size: 70.7%; font-family: MathJax_Math-italic;">k</span><span class="mo" id="MathJax-Span-42" style="font-size: 70.7%; font-family: MathJax_Main;">=</span><span class="mn" id="MathJax-Span-43" style="font-size: 70.7%; font-family: MathJax_Main;">1</span></span></span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span><span style="position: absolute; clip: rect(3.439em, 1000.6em, 4.126em, -999.998em); top: -5.13em; left: 0.415em;"><span class="mi" id="MathJax-Span-44" style="font-size: 70.7%; font-family: MathJax_Math-italic;">m</span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span></span></span><span class="msubsup" id="MathJax-Span-45" style="padding-left: 0.186em;"><span style="display: inline-block; position: relative; width: 1.239em; height: 0px;"><span style="position: absolute; clip: rect(3.393em, 1000.51em, 4.126em, -999.998em); top: -3.984em; left: 0em;"><span class="mi" id="MathJax-Span-46" style="font-family: MathJax_Math-italic;">a</span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span><span style="position: absolute; top: -3.847em; left: 0.552em;"><span class="texatom" id="MathJax-Span-47"><span class="mrow" id="MathJax-Span-48"><span class="mi" id="MathJax-Span-49" style="font-size: 70.7%; font-family: MathJax_Math-italic;">i</span><span class="mi" id="MathJax-Span-50" style="font-size: 70.7%; font-family: MathJax_Math-italic;">k</span></span></span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span></span></span><span class="msubsup" id="MathJax-Span-51"><span style="display: inline-block; position: relative; width: 1.148em; height: 0px;"><span style="position: absolute; clip: rect(3.164em, 1000.41em, 4.126em, -999.998em); top: -3.984em; left: 0em;"><span class="mi" id="MathJax-Span-52" style="font-family: MathJax_Math-italic;">b</span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span><span style="position: absolute; top: -3.847em; left: 0.415em;"><span class="texatom" id="MathJax-Span-53"><span class="mrow" id="MathJax-Span-54"><span class="mi" id="MathJax-Span-55" style="font-size: 70.7%; font-family: MathJax_Math-italic;">k</span><span class="mi" id="MathJax-Span-56" style="font-size: 70.7%; font-family: MathJax_Math-italic;">j</span></span></span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -1.588em; border-left: 0px solid; width: 0px; height: 3.582em;"></span></span></nobr><span class="MJX_Assistive_MathML MJX_Assistive_MathML_Block" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><msub><mi>c</mi><mrow class="MJX-TeXAtom-ORD"><mi>i</mi><mi>j</mi></mrow></msub><mo>=</mo><munderover><mo>∑</mo><mrow class="MJX-TeXAtom-ORD"><mi>k</mi><mo>=</mo><mn>1</mn></mrow><mi>m</mi></munderover><msub><mi>a</mi><mrow class="MJX-TeXAtom-ORD"><mi>i</mi><mi>k</mi></mrow></msub><msub><mi>b</mi><mrow class="MJX-TeXAtom-ORD"><mi>k</mi><mi>j</mi></mrow></msub></math></span></span></div><script type="math/tex; mode=display" id="MathJax-Element-8">c_{ij} = \sum_{k=1}^m a_{ik}b_{kj}</script>
+
+<p class=" has-jax has-jax has-jax has-jax has-jax has-jax">where <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-9-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-57" style="width: 1.423em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.148em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.789em, 1001.15em, 2.797em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-58"><span class="msubsup" id="MathJax-Span-59"><span style="display: inline-block; position: relative; width: 1.148em; height: 0px;"><span style="position: absolute; clip: rect(3.393em, 1000.51em, 4.126em, -999.998em); top: -3.984em; left: 0em;"><span class="mi" id="MathJax-Span-60" style="font-family: MathJax_Math-italic;">a</span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span><span style="position: absolute; top: -3.847em; left: 0.552em;"><span class="texatom" id="MathJax-Span-61"><span class="mrow" id="MathJax-Span-62"><span class="mi" id="MathJax-Span-63" style="font-size: 70.7%; font-family: MathJax_Math-italic;">i</span><span class="mi" id="MathJax-Span-64" style="font-size: 70.7%; font-family: MathJax_Math-italic;">j</span></span></span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.395em; border-left: 0px solid; width: 0px; height: 1.026em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>a</mi><mrow class="MJX-TeXAtom-ORD"><mi>i</mi><mi>j</mi></mrow></msub></math></span></span><script type="math/tex" id="MathJax-Element-9">a_{ij}</script>, <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-10-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msub&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-65" style="width: 1.331em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.056em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.56em, 1001.06em, 2.797em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-66"><span class="msubsup" id="MathJax-Span-67"><span style="display: inline-block; position: relative; width: 1.056em; height: 0px;"><span style="position: absolute; clip: rect(3.164em, 1000.41em, 4.126em, -999.998em); top: -3.984em; left: 0em;"><span class="mi" id="MathJax-Span-68" style="font-family: MathJax_Math-italic;">b</span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span><span style="position: absolute; top: -3.847em; left: 0.415em;"><span class="texatom" id="MathJax-Span-69"><span class="mrow" id="MathJax-Span-70"><span class="mi" id="MathJax-Span-71" style="font-size: 70.7%; font-family: MathJax_Math-italic;">i</span><span class="mi" id="MathJax-Span-72" style="font-size: 70.7%; font-family: MathJax_Math-italic;">j</span></span></span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.395em; border-left: 0px solid; width: 0px; height: 1.366em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>b</mi><mrow class="MJX-TeXAtom-ORD"><mi>i</mi><mi>j</mi></mrow></msub></math></span></span><script type="math/tex" id="MathJax-Element-10">b_{ij}</script> and <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-11-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msub&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-73" style="width: 1.331em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.056em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.789em, 1001.06em, 2.797em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-74"><span class="msubsup" id="MathJax-Span-75"><span style="display: inline-block; position: relative; width: 1.056em; height: 0px;"><span style="position: absolute; clip: rect(3.393em, 1000.41em, 4.126em, -999.998em); top: -3.984em; left: 0em;"><span class="mi" id="MathJax-Span-76" style="font-family: MathJax_Math-italic;">c</span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span><span style="position: absolute; top: -3.847em; left: 0.415em;"><span class="texatom" id="MathJax-Span-77"><span class="mrow" id="MathJax-Span-78"><span class="mi" id="MathJax-Span-79" style="font-size: 70.7%; font-family: MathJax_Math-italic;">i</span><span class="mi" id="MathJax-Span-80" style="font-size: 70.7%; font-family: MathJax_Math-italic;">j</span></span></span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.395em; border-left: 0px solid; width: 0px; height: 1.026em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>c</mi><mrow class="MJX-TeXAtom-ORD"><mi>i</mi><mi>j</mi></mrow></msub></math></span></span><script type="math/tex" id="MathJax-Element-11">c_{ij}</script> are elements of <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-12-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-81" style="width: 0.919em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.735em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.514em, 1000.69em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-82"><span class="mi" id="MathJax-Span-83" style="font-family: MathJax_Math-italic;">A</span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 1.026em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi></math></span></span><script type="math/tex" id="MathJax-Element-12">A</script>, <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-13-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;B&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-84" style="width: 0.965em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.781em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.56em, 1000.78em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-85"><span class="mi" id="MathJax-Span-86" style="font-family: MathJax_Math-italic;">B</span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 0.969em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>B</mi></math></span></span><script type="math/tex" id="MathJax-Element-13">B</script>, and <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-14-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;C&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-87" style="width: 0.965em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.781em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.56em, 1000.78em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-88"><span class="mi" id="MathJax-Span-89" style="font-family: MathJax_Math-italic;">C<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.048em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 1.026em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>C</mi></math></span></span><script type="math/tex" id="MathJax-Element-14">C</script>, respectively.</p>
+
+<p><img src="./lab4_files/98935948-3f3b5900-251f-11eb-9568-5feb972a03e0.png" width="600px" alt="Matrix Figure"></p>
+
+<p>Your mission is to calculate the matrix multiplication as fast as possible.
+You may try many methods (e.g., SIMD, tiling, or some algorithms) to achieve a higher performance.
+You are allowed to use any code on the Internet, but you need to re-write the code yourself, 
+which means copying and pasting is not allowed.
+In addition, you are not allowed to use any third-party library; that is, you have to write your MPI program from scratch.
+Furthermore, each node is allowed to run a single-threaded process, so using OpenMP, Pthread, fork, GPU, etc. are not allowed.</p>
+
+<blockquote>
+  <p>If you are not sure about the rule, ask on our Facebook group!</p>
+</blockquote>
+
+<p><strong>Input</strong></p>
+
+<p class=" has-jax has-jax has-jax">In the first line, three integers <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-15-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-90" style="width: 0.735em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.598em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.789em, 1000.6em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-91"><span class="mi" id="MathJax-Span-92" style="font-family: MathJax_Math-italic;">n</span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 0.685em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi></math></span></span><script type="math/tex" id="MathJax-Element-15">n</script>, <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-16-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-93" style="width: 1.102em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.873em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.789em, 1000.87em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-94"><span class="mi" id="MathJax-Span-95" style="font-family: MathJax_Math-italic;">m</span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 0.685em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>m</mi></math></span></span><script type="math/tex" id="MathJax-Element-16">m</script> and <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-17-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-96" style="width: 0.369em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.277em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.56em, 1000.23em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-97"><span class="mi" id="MathJax-Span-98" style="font-family: MathJax_Math-italic;">l</span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 0.969em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>l</mi></math></span></span><script type="math/tex" id="MathJax-Element-17">l</script> are given separated by space characters.</p>
+
+<p class=" has-jax has-jax has-jax has-jax">In the following lines, the <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-18-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;&amp;#x00D7;&lt;/mo&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-99" style="width: 3.347em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.706em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.743em, 1002.71em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-100"><span class="mi" id="MathJax-Span-101" style="font-family: MathJax_Math-italic;">n</span><span class="mo" id="MathJax-Span-102" style="font-family: MathJax_Main; padding-left: 0.231em;">×</span><span class="mi" id="MathJax-Span-103" style="font-family: MathJax_Math-italic; padding-left: 0.231em;">m</span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 0.741em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>×</mo><mi>m</mi></math></span></span><script type="math/tex" id="MathJax-Element-18">n \times m</script> matrix <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-19-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;A&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-104" style="width: 0.919em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.735em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.514em, 1000.69em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-105"><span class="mi" id="MathJax-Span-106" style="font-family: MathJax_Math-italic;">A</span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 1.026em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>A</mi></math></span></span><script type="math/tex" id="MathJax-Element-19">A</script> and the <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-20-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mo&gt;&amp;#x00D7;&lt;/mo&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-107" style="width: 3.026em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.431em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.56em, 1002.38em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-108"><span class="mi" id="MathJax-Span-109" style="font-family: MathJax_Math-italic;">m</span><span class="mo" id="MathJax-Span-110" style="font-family: MathJax_Main; padding-left: 0.231em;">×</span><span class="mi" id="MathJax-Span-111" style="font-family: MathJax_Math-italic; padding-left: 0.231em;">l</span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 0.969em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>m</mi><mo>×</mo><mi>l</mi></math></span></span><script type="math/tex" id="MathJax-Element-20">m \times l</script> matrix <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-21-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;B&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-112" style="width: 0.965em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.781em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.56em, 1000.78em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-113"><span class="mi" id="MathJax-Span-114" style="font-family: MathJax_Math-italic;">B</span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 0.969em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>B</mi></math></span></span><script type="math/tex" id="MathJax-Element-21">B</script> are given. All the numbers are integers.</p>
+
+<p><strong>Output</strong></p>
+
+<p class=" has-jax has-jax has-jax">Print elements of the <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-22-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;&amp;#x00D7;&lt;/mo&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-115" style="width: 2.614em; display: inline-block;"><span style="display: inline-block; position: relative; width: 2.11em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.56em, 1002.06em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-116"><span class="mi" id="MathJax-Span-117" style="font-family: MathJax_Math-italic;">n</span><span class="mo" id="MathJax-Span-118" style="font-family: MathJax_Main; padding-left: 0.231em;">×</span><span class="mi" id="MathJax-Span-119" style="font-family: MathJax_Math-italic; padding-left: 0.231em;">l</span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 0.969em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi><mo>×</mo><mi>l</mi></math></span></span><script type="math/tex" id="MathJax-Element-22">n \times l</script> matrix <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-23-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;C&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-120" style="width: 0.965em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.781em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.56em, 1000.78em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-121"><span class="mi" id="MathJax-Span-122" style="font-family: MathJax_Math-italic;">C<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.048em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 1.026em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>C</mi></math></span></span><script type="math/tex" id="MathJax-Element-23">C</script> (<span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-24-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;msub&gt;&lt;mi&gt;c&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-123" style="width: 1.331em; display: inline-block;"><span style="display: inline-block; position: relative; width: 1.056em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.789em, 1001.06em, 2.797em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-124"><span class="msubsup" id="MathJax-Span-125"><span style="display: inline-block; position: relative; width: 1.056em; height: 0px;"><span style="position: absolute; clip: rect(3.393em, 1000.41em, 4.126em, -999.998em); top: -3.984em; left: 0em;"><span class="mi" id="MathJax-Span-126" style="font-family: MathJax_Math-italic;">c</span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span><span style="position: absolute; top: -3.847em; left: 0.415em;"><span class="texatom" id="MathJax-Span-127"><span class="mrow" id="MathJax-Span-128"><span class="mi" id="MathJax-Span-129" style="font-size: 70.7%; font-family: MathJax_Math-italic;">i</span><span class="mi" id="MathJax-Span-130" style="font-size: 70.7%; font-family: MathJax_Math-italic;">j</span></span></span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.395em; border-left: 0px solid; width: 0px; height: 1.026em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><msub><mi>c</mi><mrow class="MJX-TeXAtom-ORD"><mi>i</mi><mi>j</mi></mrow></msub></math></span></span><script type="math/tex" id="MathJax-Element-24">c_{ij}</script>). Print a single space character between adjacent elements.</p>
+
+<p><strong>Constraints</strong></p>
+
+<ol>
+  <li class=" has-jax"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-25-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mo&gt;&amp;#x2264;&lt;/mo&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;mo&gt;&amp;#x2264;&lt;/mo&gt;&lt;mn&gt;10000&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-131" style="width: 10.358em; display: inline-block;"><span style="display: inline-block; position: relative; width: 8.342em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.56em, 1008.3em, 2.706em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-132"><span class="mn" id="MathJax-Span-133" style="font-family: MathJax_Main;">1</span><span class="mo" id="MathJax-Span-134" style="font-family: MathJax_Main; padding-left: 0.277em;">≤</span><span class="mi" id="MathJax-Span-135" style="font-family: MathJax_Math-italic; padding-left: 0.277em;">n</span><span class="mo" id="MathJax-Span-136" style="font-family: MathJax_Main;">,</span><span class="mi" id="MathJax-Span-137" style="font-family: MathJax_Math-italic; padding-left: 0.186em;">m</span><span class="mo" id="MathJax-Span-138" style="font-family: MathJax_Main;">,</span><span class="mi" id="MathJax-Span-139" style="font-family: MathJax_Math-italic; padding-left: 0.186em;">l</span><span class="mo" id="MathJax-Span-140" style="font-family: MathJax_Main; padding-left: 0.277em;">≤</span><span class="mn" id="MathJax-Span-141" style="font-family: MathJax_Main; padding-left: 0.277em;">10000</span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.281em; border-left: 0px solid; width: 0px; height: 1.196em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>1</mn><mo>≤</mo><mi>n</mi><mo>,</mo><mi>m</mi><mo>,</mo><mi>l</mi><mo>≤</mo><mn>10000</mn></math></span></span><script type="math/tex" id="MathJax-Element-25">1 ≤ n, m, l ≤ 10000</script></li>
+  <li class=" has-jax"><span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-26-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mn&gt;0&lt;/mn&gt;&lt;mo&gt;&amp;#x2264;&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;msub&gt;&lt;mi&gt;b&lt;/mi&gt;&lt;mrow class=&quot;MJX-TeXAtom-ORD&quot;&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;mo&gt;&amp;#x2264;&lt;/mo&gt;&lt;mn&gt;100&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-142" style="width: 9.121em; display: inline-block;"><span style="display: inline-block; position: relative; width: 7.334em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.56em, 1007.29em, 2.797em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-143"><span class="mn" id="MathJax-Span-144" style="font-family: MathJax_Main;">0</span><span class="mo" id="MathJax-Span-145" style="font-family: MathJax_Main; padding-left: 0.277em;">≤</span><span class="msubsup" id="MathJax-Span-146" style="padding-left: 0.277em;"><span style="display: inline-block; position: relative; width: 1.148em; height: 0px;"><span style="position: absolute; clip: rect(3.393em, 1000.51em, 4.126em, -999.998em); top: -3.984em; left: 0em;"><span class="mi" id="MathJax-Span-147" style="font-family: MathJax_Math-italic;">a</span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span><span style="position: absolute; top: -3.847em; left: 0.552em;"><span class="texatom" id="MathJax-Span-148"><span class="mrow" id="MathJax-Span-149"><span class="mi" id="MathJax-Span-150" style="font-size: 70.7%; font-family: MathJax_Math-italic;">i</span><span class="mi" id="MathJax-Span-151" style="font-size: 70.7%; font-family: MathJax_Math-italic;">j</span></span></span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span></span></span><span class="mo" id="MathJax-Span-152" style="font-family: MathJax_Main;">,</span><span class="msubsup" id="MathJax-Span-153" style="padding-left: 0.186em;"><span style="display: inline-block; position: relative; width: 1.056em; height: 0px;"><span style="position: absolute; clip: rect(3.164em, 1000.41em, 4.126em, -999.998em); top: -3.984em; left: 0em;"><span class="mi" id="MathJax-Span-154" style="font-family: MathJax_Math-italic;">b</span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span><span style="position: absolute; top: -3.847em; left: 0.415em;"><span class="texatom" id="MathJax-Span-155"><span class="mrow" id="MathJax-Span-156"><span class="mi" id="MathJax-Span-157" style="font-size: 70.7%; font-family: MathJax_Math-italic;">i</span><span class="mi" id="MathJax-Span-158" style="font-size: 70.7%; font-family: MathJax_Math-italic;">j</span></span></span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span></span></span><span class="mo" id="MathJax-Span-159" style="font-family: MathJax_Main; padding-left: 0.277em;">≤</span><span class="mn" id="MathJax-Span-160" style="font-family: MathJax_Main; padding-left: 0.277em;">100</span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.395em; border-left: 0px solid; width: 0px; height: 1.366em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mn>0</mn><mo>≤</mo><msub><mi>a</mi><mrow class="MJX-TeXAtom-ORD"><mi>i</mi><mi>j</mi></mrow></msub><mo>,</mo><msub><mi>b</mi><mrow class="MJX-TeXAtom-ORD"><mi>i</mi><mi>j</mi></mrow></msub><mo>≤</mo><mn>100</mn></math></span></span><script type="math/tex" id="MathJax-Element-26">0 ≤ a_{ij}, b_{ij} ≤ 100</script></li>
+</ol>
+
+<p><strong>Sample Input</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>3 2 3
+1 2
+0 3
+4 5
+1 2 1
+0 3 2
+</code></pre></div></div>
+
+<p><strong>Sample Output</strong></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>1 8 5
+0 9 6
+4 23 14
+</code></pre></div></div>
+
+<p><strong>Data Sets</strong></p>
+
+<p class=" has-jax has-jax has-jax">There are two data sets. The table shows the credit, the range of <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-27-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-161" style="width: 0.735em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.598em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.789em, 1000.6em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-162"><span class="mi" id="MathJax-Span-163" style="font-family: MathJax_Math-italic;">n</span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 0.685em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>n</mi></math></span></span><script type="math/tex" id="MathJax-Element-27">n</script>, <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-28-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;m&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-164" style="width: 1.102em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.873em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.789em, 1000.87em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-165"><span class="mi" id="MathJax-Span-166" style="font-family: MathJax_Math-italic;">m</span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 0.685em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>m</mi></math></span></span><script type="math/tex" id="MathJax-Element-28">m</script>, and <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-29-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;l&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-167" style="width: 0.369em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.277em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.56em, 1000.23em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-168"><span class="mi" id="MathJax-Span-169" style="font-family: MathJax_Math-italic;">l</span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 0.969em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>l</mi></math></span></span><script type="math/tex" id="MathJax-Element-29">l</script>, and the hosts used for each data set.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Set</th>
+      <th>Credit</th>
+      <th>n, m, l</th>
+      <th>Hosts</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td><em>10 points</em></td>
+      <td>300-500</td>
+      <td>Any of four from <code class="language-plaintext highlighter-rouge">pp1</code>-<code class="language-plaintext highlighter-rouge">pp5</code></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td><em>10 points</em></td>
+      <td>1000-2000</td>
+      <td><code class="language-plaintext highlighter-rouge">pp1</code>-<code class="language-plaintext highlighter-rouge">pp5</code></td>
+    </tr>
+  </tbody>
+</table>
+
+<p>You may have different implementations for the two data sets.</p>
+
+<p>Notice that only one process per node is allowed.</p>
+
+<p>Here is an example hostfile:</p>
+
+<div class="language-conf highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">pp1</span> <span class="n">slot</span>=<span class="m">1</span>
+<span class="n">pp2</span> <span class="n">slot</span>=<span class="m">1</span>
+<span class="n">pp4</span> <span class="n">slot</span>=<span class="m">1</span>
+<span class="n">pp5</span> <span class="n">slot</span>=<span class="m">1</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>You may use <code class="language-plaintext highlighter-rouge">pp6</code>-<code class="language-plaintext highlighter-rouge">pp9</code> to test the first data set if <code class="language-plaintext highlighter-rouge">pp1</code>-<code class="language-plaintext highlighter-rouge">pp5</code> are busy.</p>
+</blockquote>
+
+<p><strong>Q9</strong> (<em>5 points</em>)</p>
+<ol>
+  <li>Describe what approach(es) were used in your MPI matrix multiplication for each data set.</li>
+</ol>
+
+<h2 id="3-requirements">3. Requirements</h2>
+
+<h3 id="31-requirements-for-part-one">3.1 Requirements for Part One</h3>
+
+<ul>
+  <li>Code implementation (following the instructions in Sections <a href="https://nctu-sslab.github.io/PP-f20/HW4/#121--mpi-blocking-communication--linear-reduction-algorithm">1.2.1</a>-<a href="https://nctu-sslab.github.io/PP-f20/HW4/#126-mpi-windows-and-one-sided-communication--linear-reduction-algorithm">1.2.6</a>
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">hello.cc</code></li>
+      <li><code class="language-plaintext highlighter-rouge">pi_block_linear.cc</code></li>
+      <li><code class="language-plaintext highlighter-rouge">pi_block_tree.cc</code></li>
+      <li><code class="language-plaintext highlighter-rouge">pi_gather.cc</code></li>
+      <li><code class="language-plaintext highlighter-rouge">pi_nonblock_linear.cc</code></li>
+      <li><code class="language-plaintext highlighter-rouge">pi_one_side.cc</code></li>
+      <li><code class="language-plaintext highlighter-rouge">pi_reduce.cc</code></li>
+    </ul>
+  </li>
+  <li>Answer the questions (marked with “<strong>Q1-Q8</strong>”) in a <strong>REPORT</strong> using <a href="https://hackmd.io/">HackMD</a>. (Notice that in this assignment a higher standard will be applied when grading the quality of your report.)</li>
+</ul>
+
+<h3 id="32-requirements-for-part-two">3.2 Requirements for Part Two</h3>
+
+<ul>
+  <li>Code implementation
+    <ul>
+      <li>You should write a program that fits the input/output criteria as described in Section <a href="https://nctu-sslab.github.io/PP-f20/HW4/#2-part-two-matrix-multiplication-with-mpi">2</a>.</li>
+      <li>You should write a <code class="language-plaintext highlighter-rouge">Makefile</code> that aims to generate an executable called <code class="language-plaintext highlighter-rouge">matmul</code>. In addition, <code class="language-plaintext highlighter-rouge">main.cc</code>, which contains the <code class="language-plaintext highlighter-rouge">main()</code> function, must be a part of <code class="language-plaintext highlighter-rouge">matmul</code> and cannot be modified.</li>
+      <li>Your program will be evaluated with command <code class="language-plaintext highlighter-rouge">$ make; mpirun -np %N% --hostfile %hosts% matmul &lt; %data_file%</code>, where <code class="language-plaintext highlighter-rouge">N</code> is 4 or 5, <code class="language-plaintext highlighter-rouge">hosts</code> is our hostfile, and <code class="language-plaintext highlighter-rouge">data_file</code> is the input.</li>
+      <li>There are some data in the <code class="language-plaintext highlighter-rouge">/nfs/data</code> folder for testing. The data are available at <code class="language-plaintext highlighter-rouge">/nfs/data.zip</code> if you’d like to test them in your own machine(s). The testing script provided uses the data to verify your program. You don’t expect to pass only the testing data.</li>
+    </ul>
+  </li>
+  <li>Answer the questions (marked with “<strong>Q9</strong>”) in a <strong>REPORT</strong> using <a href="https://hackmd.io/">HackMD</a>. (Notice that in this assignment a higher standard will be applied when grading the quality of your report.)</li>
+</ul>
+
+<h2 id="4-grading-policies">4. Grading Policies</h2>
+
+<p><strong>NO CHEATING!!</strong> You will receive no credit if you are found cheating.</p>
+
+<p>Total of 102%:</p>
+<ul>
+  <li>part 1 (77%):
+    <ul>
+      <li>Implementation correctness and performance: 45%</li>
+      <li>Questions: 32%</li>
+    </ul>
+  </li>
+  <li>part 2 (25%):
+    <ul>
+      <li>Performance: 20% (10% for each data set)
+        <ul>
+          <li>Evaluations will be conducted for each data set with the metric below.</li>
+        </ul>
+      </li>
+      <li>Questions: 5%</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Metric (for each data set):</p>
+
+<span class="MathJax_Preview" style="color: inherit;"></span><div class="MathJax_Display" style="text-align: center;"><span class="MathJax" id="MathJax-Element-30-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot;&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;mi&gt;T&lt;/mi&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mi&gt;Y&lt;/mi&gt;&lt;/mrow&gt;&lt;mrow&gt;&lt;mi&gt;T&lt;/mi&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mi&gt;F&lt;/mi&gt;&lt;/mrow&gt;&lt;/mfrac&gt;&lt;mo&gt;&amp;#x00D7;&lt;/mo&gt;&lt;mn&gt;60&lt;/mn&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;&amp;#x0025;&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mtext&gt;if&lt;/mtext&gt;&lt;mspace width=&quot;thickmathspace&quot; /&gt;&lt;mi&gt;Y&lt;/mi&gt;&lt;mo&gt;&amp;lt;&lt;/mo&gt;&lt;mi&gt;T&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mrow&gt;&lt;mo&gt;{&lt;/mo&gt;&lt;mtable columnalign=&quot;left left&quot; rowspacing=&quot;.2em&quot; columnspacing=&quot;1em&quot; displaystyle=&quot;false&quot;&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mn&gt;20&lt;/mn&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;&amp;#x0025;&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mtext&gt;if&lt;/mtext&gt;&lt;mspace width=&quot;thickmathspace&quot; /&gt;&lt;mi&gt;Y&lt;/mi&gt;&lt;mo&gt;&amp;lt;&lt;/mo&gt;&lt;mi&gt;F&lt;/mi&gt;&lt;mo&gt;&amp;#x00D7;&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd /&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mn&gt;40&lt;/mn&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;&amp;#x0025;&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mtext&gt;if&lt;/mtext&gt;&lt;mspace width=&quot;thickmathspace&quot; /&gt;&lt;mi&gt;Y&lt;/mi&gt;&lt;mo&gt;&amp;lt;&lt;/mo&gt;&lt;mi&gt;F&lt;/mi&gt;&lt;mo&gt;&amp;#x00D7;&lt;/mo&gt;&lt;mn&gt;1.5&lt;/mn&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;/mtable&gt;&lt;mo fence=&quot;true&quot; stretchy=&quot;true&quot; symmetric=&quot;true&quot;&gt;&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;" role="presentation" style="text-align: center; position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-170" style="width: 26.487em; display: inline-block;"><span style="display: inline-block; position: relative; width: 21.355em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(2.248em, 1021.36em, 5.959em, -999.998em); top: -4.351em; left: 0em;"><span class="mrow" id="MathJax-Span-171"><span class="mfrac" id="MathJax-Span-172"><span style="display: inline-block; position: relative; width: 2.843em; height: 0px; margin-right: 0.14em; margin-left: 0.14em;"><span style="position: absolute; clip: rect(3.164em, 1002.71em, 4.218em, -999.998em); top: -4.671em; left: 50%; margin-left: -1.372em;"><span class="mrow" id="MathJax-Span-173"><span class="mi" id="MathJax-Span-174" style="font-family: MathJax_Math-italic;">T<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.14em;"></span></span><span class="mo" id="MathJax-Span-175" style="font-family: MathJax_Main; padding-left: 0.231em;">−</span><span class="mi" id="MathJax-Span-176" style="font-family: MathJax_Math-italic; padding-left: 0.231em;">Y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.186em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span><span style="position: absolute; clip: rect(3.164em, 1002.71em, 4.218em, -999.998em); top: -3.297em; left: 50%; margin-left: -1.327em;"><span class="mrow" id="MathJax-Span-177"><span class="mi" id="MathJax-Span-178" style="font-family: MathJax_Math-italic;">T<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.14em;"></span></span><span class="mo" id="MathJax-Span-179" style="font-family: MathJax_Main; padding-left: 0.231em;">−</span><span class="mi" id="MathJax-Span-180" style="font-family: MathJax_Math-italic; padding-left: 0.231em;">F<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.094em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span><span style="position: absolute; clip: rect(0.873em, 1002.84em, 1.194em, -999.998em); top: -1.281em; left: 0em;"><span style="display: inline-block; overflow: hidden; vertical-align: 0em; border-top: 1.3px solid; width: 2.843em; height: 0px;"></span><span style="display: inline-block; width: 0px; height: 1.056em;"></span></span></span></span><span class="mo" id="MathJax-Span-181" style="font-family: MathJax_Main; padding-left: 0.231em;">×</span><span class="mn" id="MathJax-Span-182" style="font-family: MathJax_Main; padding-left: 0.231em;">60</span><span class="mi" id="MathJax-Span-183" style="font-family: MathJax_Main;">%</span><span class="mo" id="MathJax-Span-184" style="font-family: MathJax_Main;">,</span><span class="mtext" id="MathJax-Span-185" style="font-family: MathJax_Main; padding-left: 0.186em;">if</span><span class="mspace" id="MathJax-Span-186" style="height: 0em; vertical-align: 0em; width: 0.277em; display: inline-block; overflow: hidden;"></span><span class="mi" id="MathJax-Span-187" style="font-family: MathJax_Math-italic;">Y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.186em;"></span></span><span class="mo" id="MathJax-Span-188" style="font-family: MathJax_Main; padding-left: 0.277em;">&lt;</span><span class="mi" id="MathJax-Span-189" style="font-family: MathJax_Math-italic; padding-left: 0.277em;">T<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.14em;"></span></span><span class="mo" id="MathJax-Span-190" style="font-family: MathJax_Main; padding-left: 0.231em;">+</span><span class="mrow" id="MathJax-Span-191" style="padding-left: 0.231em;"><span class="mo" id="MathJax-Span-192" style="vertical-align: 1.973em;"><span style="display: inline-block; position: relative; width: 0.873em; height: 0px;"><span style="position: absolute; font-family: MathJax_Size4; top: -3.068em; left: 0em;">⎧<span style="display: inline-block; width: 0px; height: 3.989em;"></span></span><span style="position: absolute; font-family: MathJax_Size4; top: -1.464em; left: 0em;">⎩<span style="display: inline-block; width: 0px; height: 3.989em;"></span></span><span style="position: absolute; font-family: MathJax_Size4; top: -2.014em; left: 0em;">⎨<span style="display: inline-block; width: 0px; height: 3.989em;"></span></span></span></span><span class="mtable" id="MathJax-Span-193"><span style="display: inline-block; position: relative; width: 8.525em; height: 0px; margin-right: 0.186em; margin-left: 0.186em;"><span style="position: absolute; clip: rect(2.339em, 1008.48em, 5.959em, -999.998em); top: -4.351em; left: 0em;"><span style="display: inline-block; position: relative; width: 8.525em; height: 0px;"><span style="position: absolute; clip: rect(3.118em, 1007.7em, 4.309em, -999.998em); top: -5.13em; left: 0em;"><span class="mtd" id="MathJax-Span-194"><span class="mrow" id="MathJax-Span-195"><span class="mn" id="MathJax-Span-196" style="font-family: MathJax_Main;">20</span><span class="mi" id="MathJax-Span-197" style="font-family: MathJax_Main;">%</span><span class="mo" id="MathJax-Span-198" style="font-family: MathJax_Main;">,</span><span class="mtext" id="MathJax-Span-199" style="font-family: MathJax_Main; padding-left: 0.186em;">if</span><span class="mspace" id="MathJax-Span-200" style="height: 0em; vertical-align: 0em; width: 0.277em; display: inline-block; overflow: hidden;"></span><span class="mi" id="MathJax-Span-201" style="font-family: MathJax_Math-italic;">Y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.186em;"></span></span><span class="mo" id="MathJax-Span-202" style="font-family: MathJax_Main; padding-left: 0.277em;">&lt;</span><span class="mi" id="MathJax-Span-203" style="font-family: MathJax_Math-italic; padding-left: 0.277em;">F<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.094em;"></span></span><span class="mo" id="MathJax-Span-204" style="font-family: MathJax_Main; padding-left: 0.231em;">×</span><span class="mn" id="MathJax-Span-205" style="font-family: MathJax_Main; padding-left: 0.231em;">2</span></span></span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span><span style="position: absolute; clip: rect(3.851em, 1000em, 4.126em, -999.998em); top: -3.938em; left: 0em;"><span class="mtd" id="MathJax-Span-206"><span class="mrow" id="MathJax-Span-207"></span></span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span><span style="position: absolute; clip: rect(3.118em, 1008.48em, 4.309em, -999.998em); top: -2.747em; left: 0em;"><span class="mtd" id="MathJax-Span-208"><span class="mrow" id="MathJax-Span-209"><span class="mn" id="MathJax-Span-210" style="font-family: MathJax_Main;">40</span><span class="mi" id="MathJax-Span-211" style="font-family: MathJax_Main;">%</span><span class="mo" id="MathJax-Span-212" style="font-family: MathJax_Main;">,</span><span class="mtext" id="MathJax-Span-213" style="font-family: MathJax_Main; padding-left: 0.186em;">if</span><span class="mspace" id="MathJax-Span-214" style="height: 0em; vertical-align: 0em; width: 0.277em; display: inline-block; overflow: hidden;"></span><span class="mi" id="MathJax-Span-215" style="font-family: MathJax_Math-italic;">Y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.186em;"></span></span><span class="mo" id="MathJax-Span-216" style="font-family: MathJax_Main; padding-left: 0.277em;">&lt;</span><span class="mi" id="MathJax-Span-217" style="font-family: MathJax_Math-italic; padding-left: 0.277em;">F<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.094em;"></span></span><span class="mo" id="MathJax-Span-218" style="font-family: MathJax_Main; padding-left: 0.231em;">×</span><span class="mn" id="MathJax-Span-219" style="font-family: MathJax_Main; padding-left: 0.231em;">1.5</span></span></span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span></span><span style="display: inline-block; width: 0px; height: 4.355em;"></span></span></span></span><span class="mo" id="MathJax-Span-220"></span></span></span><span style="display: inline-block; width: 0px; height: 4.355em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -1.872em; border-left: 0px solid; width: 0px; height: 4.321em;"></span></span></nobr><span class="MJX_Assistive_MathML MJX_Assistive_MathML_Block" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mfrac><mrow><mi>T</mi><mo>−</mo><mi>Y</mi></mrow><mrow><mi>T</mi><mo>−</mo><mi>F</mi></mrow></mfrac><mo>×</mo><mn>60</mn><mi mathvariant="normal">%</mi><mo>,</mo><mtext>if</mtext><mspace width="thickmathspace"></mspace><mi>Y</mi><mo>&lt;</mo><mi>T</mi><mo>+</mo><mrow><mo>{</mo><mtable columnalign="left left" rowspacing=".2em" columnspacing="1em" displaystyle="false"><mtr><mtd><mn>20</mn><mi mathvariant="normal">%</mi><mo>,</mo><mtext>if</mtext><mspace width="thickmathspace"></mspace><mi>Y</mi><mo>&lt;</mo><mi>F</mi><mo>×</mo><mn>2</mn></mtd></mtr><mtr><mtd></mtd></mtr><mtr><mtd><mn>40</mn><mi mathvariant="normal">%</mi><mo>,</mo><mtext>if</mtext><mspace width="thickmathspace"></mspace><mi>Y</mi><mo>&lt;</mo><mi>F</mi><mo>×</mo><mn>1.5</mn></mtd></mtr></mtable><mo fence="true" stretchy="true" symmetric="true"></mo></mrow></math></span></span></div><script type="math/tex; mode=display" id="MathJax-Element-30">\frac{T-Y}{T-F} \times 60\%, \text{if} \; Y < T +
+\begin{cases}
+  20\%, \text{if} \; Y < F \times 2 \\\\
+  40\%, \text{if} \; Y < F \times 1.5
+\end{cases}</script>
+
+<p class=" has-jax has-jax has-jax">where <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-31-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;Y&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-221" style="width: 0.965em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.781em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.56em, 1000.78em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-222"><span class="mi" id="MathJax-Span-223" style="font-family: MathJax_Math-italic;">Y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.186em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 0.969em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>Y</mi></math></span></span><script type="math/tex" id="MathJax-Element-31">Y</script> and <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-32-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;F&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-224" style="width: 0.919em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.735em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.56em, 1000.74em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-225"><span class="mi" id="MathJax-Span-226" style="font-family: MathJax_Math-italic;">F<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.094em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 0.969em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>F</mi></math></span></span><script type="math/tex" id="MathJax-Element-32">F</script> indicate the execution time of your program and the fastest program, respectively, and <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-33-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;T&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi&gt;F&lt;/mi&gt;&lt;mo&gt;&amp;#x00D7;&lt;/mo&gt;&lt;mn&gt;1.5&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-227" style="width: 6.601em; display: inline-block;"><span style="display: inline-block; position: relative; width: 5.318em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.56em, 1005.27em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-228"><span class="mi" id="MathJax-Span-229" style="font-family: MathJax_Math-italic;">T<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.14em;"></span></span><span class="mo" id="MathJax-Span-230" style="font-family: MathJax_Main; padding-left: 0.277em;">=</span><span class="mi" id="MathJax-Span-231" style="font-family: MathJax_Math-italic; padding-left: 0.277em;">F<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.094em;"></span></span><span class="mo" id="MathJax-Span-232" style="font-family: MathJax_Main; padding-left: 0.231em;">×</span><span class="mn" id="MathJax-Span-233" style="font-family: MathJax_Main; padding-left: 0.231em;">1.5</span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 0.969em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>T</mi><mo>=</mo><mi>F</mi><mo>×</mo><mn>1.5</mn></math></span></span><script type="math/tex" id="MathJax-Element-33">T = F \times 1.5</script>.</p>
+
+<h2 id="5-evaluation-platform">5. Evaluation Platform</h2>
+
+<p>Your program should be able to run on UNIX-like OS platforms. We will evaluate your programs on the workstations dedicated for this course. You can access these workstations by <code class="language-plaintext highlighter-rouge">ssh</code> with the following information.</p>
+
+<p>The workstations are based on Ubuntu 18.04 with Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz processors. <code class="language-plaintext highlighter-rouge">g++-10</code>, <code class="language-plaintext highlighter-rouge">clang++-11</code>, and <code class="language-plaintext highlighter-rouge">mpi4</code> have been installed.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>IP</th>
+      <th>Port</th>
+      <th>User Name</th>
+      <th>Password</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>140.113.215.195</td>
+      <td>37076 ~ 37080, 37091~37094</td>
+      <td>{student_id}</td>
+      <td>{Provided by TA}</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong><em>ATTENTION: Never touch 37095. It is for NIS and NFS.</em></strong></p>
+</blockquote>
+
+<p>Login example:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ssh &lt;student_id&gt;@140.113.215.195 <span class="nt">-p</span> &lt;port&gt;
+</code></pre></div></div>
+
+<p>You can use the testing script <code class="language-plaintext highlighter-rouge">test_hw4</code> to check your answer <em>for reference only</em>. Run <code class="language-plaintext highlighter-rouge">test_hw4</code> in a dictionary that contains your <code class="language-plaintext highlighter-rouge">HW4_XXXXXXX.zip</code> file on the workstation.</p>
+
+<p><code class="language-plaintext highlighter-rouge">test_hw4</code>:</p>
+<ul>
+  <li>Check if the zip file is correct.</li>
+  <li>Part 1: Check the correctness. Not check the performance.</li>
+  <li>Part 2: Evaluate the performance for the public data (in average time).</li>
+  <li>Check the <code class="language-plaintext highlighter-rouge">url.txt</code></li>
+</ul>
+
+<h2 id="6-submission">6. Submission</h2>
+
+<p>All your files should be organized in the following hierarchy and zipped into a <code class="language-plaintext highlighter-rouge">.zip</code> file, named <code class="language-plaintext highlighter-rouge">HW4_xxxxxxx.zip</code>, where <code class="language-plaintext highlighter-rouge">xxxxxxx</code> is your student ID.</p>
+
+<p>Directory structure inside the zipped file:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">HW4_xxxxxxx.zip</code> (root)
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">part1</code>
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">hello.cc</code></li>
+          <li><code class="language-plaintext highlighter-rouge">pi_block_linear.cc</code></li>
+          <li><code class="language-plaintext highlighter-rouge">pi_block_tree.cc</code></li>
+          <li><code class="language-plaintext highlighter-rouge">pi_gather.cc</code></li>
+          <li><code class="language-plaintext highlighter-rouge">pi_nonblock_linear.cc</code></li>
+          <li><code class="language-plaintext highlighter-rouge">pi_one_side.cc</code></li>
+          <li><code class="language-plaintext highlighter-rouge">pi_reduce.cc</code></li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">part2</code>
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">Makefile</code></li>
+          <li><code class="language-plaintext highlighter-rouge">main.cc</code></li>
+          <li>Other program files you added</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">url.txt</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Notice that you just need to provide the URL of your HackMD report in <code class="language-plaintext highlighter-rouge">url.txt</code>, and enable the write permission for someone who knows the URL so that TAs can give you feedback directly in your report.</p>
+
+<p>Zip the file:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>zip HW4_xxxxxxx.zip <span class="nt">-r</span> part1 part2 url.txt
+</code></pre></div></div>
+
+<p>Be sure to upload your zipped file to new E3 e-Campus system by the due date.</p>
+
+<p><strong>You will get <em>NO POINT</em> if your ZIP’s name is wrong or the ZIP hierarchy is incorrect.</strong></p>
+
+<p><strong>Due Date: 23:59, December 10, Thursday, 2020</strong></p>
+
+<h2 id="7-references">7. References</h2>
+
+<ul>
+  <li><a href="https://www.open-mpi.org/doc/v4.0/">Open MPI 4.0 Document</a></li>
+  <li><a href="https://mpitutorial.com/tutorials/">MPI Tutorial</a></li>
+  <li><a href="https://wgropp.cs.illinois.edu/courses/cs598-s16/lectures/lecture34.pdf">William Gropp, One-sided Communication in MPI</a></li>
+</ul>
+
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/nctu-sslab/PP-f20">PP-f20</a> is maintained by <a href="https://github.com/nctu-sslab">nctu-sslab</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com/">GitHub Pages</a>.</span>
+      </footer>
+    </section>
+
+    
+  
+
+<div id="6e7f8df2-695c-4963-8ef9-4f035a6c542f-bottom"></div><div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; min-width: 0px; max-width: none; padding: 0px; border: 0px; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-family: MathJax_Size4, sans-serif;"></div></div></body><div id="shopback-app" style="z-index: 2147483647 !important; display: block !important;"></div></html>

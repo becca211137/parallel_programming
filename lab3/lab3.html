@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)https://nctu-sslab.github.io/PP-f20/HW3/ -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Parallel Programming @ NCTU, Fall 2020 | This is the webpage for the Parallel Programming course</title>
+<meta name="generator" content="Jekyll v3.9.0">
+<meta property="og:title" content="Parallel Programming @ NCTU, Fall 2020">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="This is the webpage for the Parallel Programming course">
+<meta property="og:description" content="This is the webpage for the Parallel Programming course">
+<link rel="canonical" href="https://nctu-sslab.github.io/PP-f20/HW3/">
+<meta property="og:url" content="https://nctu-sslab.github.io/PP-f20/HW3/">
+<meta property="og:site_name" content="Parallel Programming @ NCTU, Fall 2020">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Parallel Programming @ NCTU, Fall 2020">
+<script type="application/ld+json">
+{"description":"This is the webpage for the Parallel Programming course","headline":"Parallel Programming @ NCTU, Fall 2020","url":"https://nctu-sslab.github.io/PP-f20/HW3/","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="./lab3_files/style.css">
+  <style shopback-extension-v6-5-2="" data-styled-version="4.2.0"></style><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+  <body><div id="MathJax_Message" style="display: none;"></div>
+    <section class="page-header">
+      <h1 class="project-name">Parallel Programming @ NCTU, Fall 2020</h1>
+      <h2 class="project-tagline">This is the webpage for the Parallel Programming course</h2>
+      
+        <a href="https://github.com/nctu-sslab/PP-f20" class="btn">View on GitHub</a>
+      
+      
+    </section>
+
+    <section class="main-content">
+      <script type="text/javascript" src="./lab3_files/MathJax.js.下載" async=""> </script>
+<script type="text/x-mathjax-config;executed=true"> MathJax.Hub.Config({'HTML-CSS': { preferredFont: 'TeX', availableFonts: ['STIX','TeX'], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) }, tex2jax: { inlineMath: [ ['$', '$'] ], processEscapes: true, ignoreClass: 'tex2jax_ignore|dno',skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']}, TeX: {  noUndefined: { attributes: { mathcolor: 'red', mathbackground: '#FFEEEE', mathsize: '90%' } }, Macros: { href: '{}' } }, messageStyle: 'none' }); MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i=0; i < all.length; i += 1) { all[i].SourceElement().parentNode.className += ' has-jax'; } }); </script>
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TP966Z8H9W"></script>
+<script> window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-TP966Z8H9W',{'page_path': location.pathname + location.search + location.hash}); </script>
+
+<h1 id="programming-assignment-iii-openmp-programming">Programming Assignment III: OpenMP Programming</h1>
+
+<p>The purpose of this assignment is to familiarize yourself with OpenMP programming.</p>
+
+<p>Get the source code:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>wget https://nctu-sslab.github.io/PP-f20/HW3/HW3.zip
+<span class="nv">$ </span>unzip HW3.zip <span class="nt">-d</span> HW3
+<span class="nv">$ </span><span class="nb">chmod</span> <span class="nt">-R</span> 700 HW3 <span class="c"># avoid cheating</span>
+<span class="nv">$ </span><span class="nb">cd </span>HW3
+</code></pre></div></div>
+
+<h2 id="1-part-1-parallelizing-conjugate-gradient-method-with-openmp">1. Part 1: Parallelizing Conjugate Gradient Method with OpenMP</h2>
+
+<p>Conjugate gradient method is an algorithm for the numerical solution of particular systems of linear equations.
+It is often used to solve partial differential equations, or applied on some optimization problems. You may get more information on <a href="http://en.wikipedia.org/wiki/Conjugate_gradient_method">Wikipedia</a>.</p>
+
+<p>Please enter the <code class="language-plaintext highlighter-rouge">part1</code> folder:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd </span>part1
+</code></pre></div></div>
+
+<p>You can build and run the CG program by:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>make<span class="p">;</span> ./cg
+</code></pre></div></div>
+
+<p>In this assignment, you are asked to parallelize a serial implementation of the conjugate gradient method using OpenMP. The serial implementation is in <code class="language-plaintext highlighter-rouge">cg.c</code> and <code class="language-plaintext highlighter-rouge">cg_impl.c</code>. Please refer to the <code class="language-plaintext highlighter-rouge">README</code> file for more information about the code.</p>
+
+<p>In order to parallelize the conjugate gradient method, you may want to use profiling tools to help you explain the performance difference before and after your modification. As it probably just works ineffectively if you simply add a parallel-for directive for each <code class="language-plaintext highlighter-rouge">for</code> loop, you may want to use profiling tools, such as <code class="language-plaintext highlighter-rouge">perf</code>, <code class="language-plaintext highlighter-rouge">time</code>, <code class="language-plaintext highlighter-rouge">gprof</code>, <code class="language-plaintext highlighter-rouge">Valgrind</code> (not limited to these tools), to profile your program to better understand how much the improvement is from the code snippets you have modified.</p>
+
+<p>The following instructions may help you finish this part:</p>
+<ul>
+  <li>Try to find the hot spots of the program.</li>
+  <li>A possible improvement might be from more data parallelism, code refactoring, less page fault, or something else.</li>
+</ul>
+
+<p>See the <a href="https://nctu-sslab.github.io/PP-f20/HW3/#requirements">requirements</a> to finish this part.</p>
+
+<p>You can also run our grader via: <code class="language-plaintext highlighter-rouge">./cg_grader</code>, which reports the correctness of your program and a performance score.</p>
+
+<h2 id="part-2-parallelizing-pagerank-algorithm-with-openmp">Part 2: Parallelizing PageRank Algorithm with OpenMP</h2>
+
+<p><img src="./lab3_files/95656789-47c8fa00-0b43-11eb-80f5-56b7a849a831.png" alt="image"></p>
+
+<p>In this part, you will implement two graph processing algorithms: <a href="https://en.wikipedia.org/wiki/Breadth-first_search">breadth-first search</a> (BFS) and a simple implementation of <a href="https://en.wikipedia.org/wiki/PageRank">page rank</a>. A good implementation of this assignment will be able to run these algorithms on graphs containing hundreds of millions of edges on a multi-core machine in only seconds.</p>
+
+<p>Please enter the <code class="language-plaintext highlighter-rouge">part2</code> folder:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd </span>part2
+</code></pre></div></div>
+
+<p>Read the following sections and accomplish the <a href="https://nctu-sslab.github.io/PP-f20/HW3/#requirements">requirements</a> of this part.</p>
+
+<h3 id="21-background-representing-graphs">2.1 Background: Representing Graphs</h3>
+
+<p>The starter code operates on directed graphs, whose implementation you can find in <code class="language-plaintext highlighter-rouge">common/graph.h</code> and <code class="language-plaintext highlighter-rouge">common/graph_internal.h</code>.  We recommend you begin by understanding the graph representation in these files. A graph is represented by an array of edges (both <code class="language-plaintext highlighter-rouge">outgoing_edges</code> and <code class="language-plaintext highlighter-rouge">incoming_edges</code>), where each edge is represented by an integer describing the id of the destination vertex.  Edges are stored in the graph sorted by their source vertex, so the source vertex is implicit in the representation.  This makes for a compact representation of the graph, and also allows it to be stored contiguously in memory.  For example, to iterate over the outgoing edges for all nodes in the graph, you’d use the following code which makes use of convenient helper functions defined in <code class="language-plaintext highlighter-rouge">common/graph.h</code> (and implemented in <code class="language-plaintext highlighter-rouge">common/graph_internal.h</code>):</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span> <span class="p">(</span><span class="kt">int</span> <span class="n">i</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">i</span><span class="o">&lt;</span><span class="n">num_nodes</span><span class="p">(</span><span class="n">g</span><span class="p">);</span> <span class="n">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// Vertex is typedef'ed to an int. Vertex* points into g.outgoing_edges[]</span>
+    <span class="k">const</span> <span class="n">Vertex</span><span class="o">*</span> <span class="n">start</span> <span class="o">=</span> <span class="n">outgoing_begin</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+    <span class="k">const</span> <span class="n">Vertex</span><span class="o">*</span> <span class="n">end</span> <span class="o">=</span> <span class="n">outgoing_end</span><span class="p">(</span><span class="n">g</span><span class="p">,</span> <span class="n">i</span><span class="p">);</span>
+    <span class="k">for</span> <span class="p">(</span><span class="k">const</span> <span class="n">Vertex</span><span class="o">*</span> <span class="n">v</span><span class="o">=</span><span class="n">start</span><span class="p">;</span> <span class="n">v</span><span class="o">!=</span><span class="n">end</span><span class="p">;</span> <span class="n">v</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"Edge %u %u</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="o">*</span><span class="n">v</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+<h3 id="22-task-1-implementing-page-rank">2.2 Task 1: Implementing Page Rank</h3>
+
+<p>As a simple warm up exercise to get comfortable using the graph data structures, and to get acquainted with a few OpenMP basics, we’d like you to begin by implementing a basic version of the well-known <a href="https://en.wikipedia.org/wiki/PageRank">page rank</a> algorithm.</p>
+
+<p>Please take a look at the pseudocode provided to you in the function <code class="language-plaintext highlighter-rouge">pageRank()</code>, in the file <code class="language-plaintext highlighter-rouge">page_rank/page_rank.cpp</code>.  You should implement the function, parallelizing the code with OpenMP.  Just like any other algorithm, first identify independent work and any necessary synchronization.</p>
+
+<p>You can run your code, checking correctness and performance against the staff reference solution using:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./pr &lt;PATH_TO_GRAPH_DIRECTORY&gt;/com-orkut_117m.graph 
+</code></pre></div></div>
+
+<p>If you are working on our workstation machines, we’ve located a copy of the graph and some other graphs at <code class="language-plaintext highlighter-rouge">/HW3/graphs/</code>. You can also download the graphs from <code class="language-plaintext highlighter-rouge">http://sslab.cs.nctu.edu.tw/~acliu/all_graphs.tgz</code>. (But be careful, this is a 3GB download. <strong>Do not replicate the data on the workstations or download the zipped tar file to the workstations for conservation of storage space.</strong>)</p>
+
+<p>Some interesting real-world graphs include:</p>
+
+<ul>
+  <li>com-orkut_117m.graph</li>
+  <li>oc-pokec_30m.graph</li>
+  <li>rmat_200m.graph</li>
+  <li>soc-livejournal1_68m.graph</li>
+</ul>
+
+<p>Some useful synthetic, but large graphs include:</p>
+
+<ul>
+  <li>random_500m.graph</li>
+  <li>rmat_200m.graph</li>
+</ul>
+
+<p>There are also some very small graphs for testing.  If you look in the <code class="language-plaintext highlighter-rouge">/tools</code> directory of the starter code, you’ll notice a useful program called <code class="language-plaintext highlighter-rouge">graphTools.cpp</code> that can be used to make your own graphs as well.</p>
+
+<p>By default, the <code class="language-plaintext highlighter-rouge">pr</code> program runs your page rank algorithm with an increasing number of threads (so you can assess speedup trends).  However, since runtimes at low core counts can be long, you can explicitly specify the number of threads to only run your code under a single configuration.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./pr %GRAPH_FILENAME% 8
+</code></pre></div></div>
+
+<p>Your code should handle cases where there are no outgoing edges by distributing the probability mass on such vertices evenly among all the vertices in the graph. That is, your code should work as if there were edges from such a node to every node in the graph (including itself). The comments in the starter code describe how to handle this case.</p>
+
+<p>You can also run our grader via: <code class="language-plaintext highlighter-rouge">./pr_grader &lt;PATH_TO_GRAPH_DIRECTORY&gt;</code>, which reports the correctness of your program and a performance score for four specific graphs.</p>
+
+<p><strong>You are highly recommended to read the paper, <a href="https://parlab.eecs.berkeley.edu/sites/all/parlab/files/main.pdf">“Direction-Optimizing Breadth-First Search”</a>, which proposed a hybrid method combining top-down and bottom-up algorithms for breadth-first search, before you continue the following sections.</strong> In Sections <a href="https://nctu-sslab.github.io/PP-f20/HW3/#23-task-2-parallel-breadth-first-search-top-down">2.3</a>, <a href="https://nctu-sslab.github.io/PP-f20/HW3/#24-task-3-bottom-up-bfs">2.4</a>, <a href="https://nctu-sslab.github.io/PP-f20/HW3/#25-task-4-hybrid-bfs">2.5</a>, you will need to finish a top-down, bottom-up, and hybrid method, respectively.</p>
+
+<h3 id="23-task-2-parallel-breadth-first-search-top-down">2.3 Task 2: Parallel Breadth-First Search (“Top Down”)</h3>
+
+<p>Breadth-first search (BFS) is a common algorithm that you’ve almost certainly seen in a prior algorithms class.</p>
+
+<p>Please familiarize yourself with the function <code class="language-plaintext highlighter-rouge">bfs_top_down()</code> in <code class="language-plaintext highlighter-rouge">breadth_first_search/bfs.cpp</code>, which contains a sequential implementation of BFS. The code uses BFS to compute the distance to vertex 0 for all vertices in the graph. You may wish to familiarize yourself with the graph structure defined in <code class="language-plaintext highlighter-rouge">common/graph.h</code> as well as the simple array data structure <code class="language-plaintext highlighter-rouge">vertex_set</code> (<code class="language-plaintext highlighter-rouge">breadth_first_search/bfs.h</code>), which is an array of vertices used to represent the current frontier of BFS.</p>
+
+<p>You can run bfs using:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>./bfs &lt;PATH_TO_GRAPHS_DIRECTORY&gt;/rmat_200m.graph
+</code></pre></div></div>
+
+<p>(as with page rank, <code class="language-plaintext highlighter-rouge">bfs</code>’s first argument is a graph file, and an optional second argument is the number of threads.)</p>
+
+<p>When you run <code class="language-plaintext highlighter-rouge">bfs</code>, you’ll see the execution time and the frontier size printed for each step in the algorithm.  Correctness will pass for the top-down version (since we’ve given you a correct sequential implementation), but it will be slow.  (Note that <code class="language-plaintext highlighter-rouge">bfs</code> will report failures for a “bottom-up” and “hybrid” versions of the algorithm, which you will implement later in this assignment.)</p>
+
+<p>In this part of the assignment your job is to parallelize a top-down BFS. As with page rank, you’ll need to focus on identifying parallelism, as well as inserting the appropriate synchronization to ensure correctness. We wish to remind you that you <strong>should not</strong> expect to achieve near-perfect speedups on this problem (we’ll leave it to you to think about why!).</p>
+
+<p><strong>Tips/Hints:</strong></p>
+
+<ul>
+  <li>Always start by considering what work can be done in parallel.</li>
+  <li>Some part of the computation may need to be synchronized, for example, by wrapping the appropriate code within a critical region using <code class="language-plaintext highlighter-rouge">#pragma omp critical</code>.  However, in this problem you can get by with a single atomic operation called <code class="language-plaintext highlighter-rouge">compare and swap</code>.  You can read about <a href="http://gcc.gnu.org/onlinedocs/gcc-4.1.2/gcc/Atomic-Builtins.html">GCC’s implementation of compare and swap</a>, which is exposed to C code as the function <code class="language-plaintext highlighter-rouge">__sync_bool_compare_and_swap</code>.  If you can figure out how to use compare-and-swap for this problem, you will achieve much higher performance than using a critical region.</li>
+  <li>Are there conditions where it is possible to avoid using <code class="language-plaintext highlighter-rouge">compare_and_swap</code>?  In other words, when you <em>know</em> in advance that the comparison will fail?</li>
+  <li>There is a preprocessor macro <code class="language-plaintext highlighter-rouge">VERBOSE</code> to make it easy to disable useful print per-step timings in your solution (see the top of <code class="language-plaintext highlighter-rouge">breadth_first_search/bfs.cpp</code>).  In general, these printfs occur infrequently enough (only once per BFS step) that they do not notably impact performance, but if you want to disable the printfs during timing, you can use this <code class="language-plaintext highlighter-rouge">#define</code> as a convenience.</li>
+</ul>
+
+<h3 id="24-task-3-bottom-up-bfs">2.4 Task 3: “Bottom-Up” BFS</h3>
+
+<p>Think about what behavior might cause a performance problem in the BFS implementation from Part <a href="https://nctu-sslab.github.io/PP-f20/HW3/#23-task-2-parallel-breadth-first-search-top-down">2.3</a>.  An alternative implementation of a breadth-first search step may be more efficient in these situations.  Instead of iterating over all vertices in the frontier and marking all vertices adjacent to the frontier, it is possible to implement BFS by having <em>each vertex check whether it should be added to the frontier!</em>  Basic pseudocode for the algorithm is as follows:</p>
+
+<div class="language-c++ highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">for</span><span class="p">(</span><span class="n">each</span> <span class="n">vertex</span> <span class="n">v</span> <span class="n">in</span> <span class="n">graph</span><span class="p">)</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">v</span> <span class="n">has</span> <span class="n">not</span> <span class="n">been</span> <span class="n">visited</span> <span class="o">&amp;&amp;</span> 
+       <span class="n">v</span> <span class="n">shares</span> <span class="n">an</span> <span class="n">incoming</span> <span class="n">edge</span> <span class="n">with</span> <span class="n">a</span> <span class="n">vertex</span> <span class="n">u</span> <span class="n">on</span> <span class="n">the</span> <span class="n">frontier</span><span class="p">)</span>
+            <span class="n">add</span> <span class="n">vertex</span> <span class="n">v</span> <span class="n">to</span> <span class="n">frontier</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>This algorithm is sometimes referred to as a “bottom-up” implementation of BFS, since each vertex looks “up the BFS tree” to find its ancestor. (As opposed to being found by its ancestor in a “top-down” fashion, as was done in Part <a href="https://nctu-sslab.github.io/PP-f20/HW3/#23-task-2-parallel-breadth-first-search-top-down">2.3</a>.)</p>
+
+<p>Please implement a bottom-up BFS to compute the shortest path to all the vertices in the graph from the root (see <code class="language-plaintext highlighter-rouge">bfs_bottom_up()</code> in <code class="language-plaintext highlighter-rouge">breadth_first_search/bfs.cpp</code>).  Start by implementing a simple sequential version.  Then parallelize your implementation.</p>
+
+<p><strong>Tips/Hints:</strong></p>
+
+<ul>
+  <li>It may be useful to think about how you represent the set of unvisited nodes.  Do the top-down and bottom-up versions of the code lend themselves to different implementations?</li>
+  <li>How do the synchronization requirements of the bottom-up BFS change?</li>
+</ul>
+
+<h3 id="25-task-4-hybrid-bfs">2.5 Task 4: Hybrid BFS</h3>
+
+<p>Notice that in some steps of the BFS, the “bottom-up” BFS is significantly faster than the top-down version.  In other steps, the top-down version is significantly faster.  This suggests a major performance improvement in your implementation, if <strong>you could dynamically choose between your “top-down” and “bottom-up” formulations based on the size of the frontier or other properties of the graph!</strong>  If you want a solution competitive with the reference one, your implementation will likely have to implement this dynamic optimization.  Please provide your solution in <code class="language-plaintext highlighter-rouge">bfs_hybrid()</code> in <code class="language-plaintext highlighter-rouge">breadth_first_search/bfs.cpp</code>.</p>
+
+<p><strong>Tips/Hints:</strong></p>
+
+<ul>
+  <li>If you used different representations of the frontier in Parts <a href="https://nctu-sslab.github.io/PP-f20/HW3/#23-task-2-parallel-breadth-first-search-top-down">2.3</a> and <a href="https://nctu-sslab.github.io/PP-f20/HW3/#24-task-3-bottom-up-bfs">2.4</a>, you may have to convert between these representations in the hybrid solution.  How might you efficiently convert between them? Is there an overhead in doing so?</li>
+</ul>
+
+<h2 id="3-requirements">3. <a name="requirements">Requirements</a></h2>
+
+<h3 id="31-part-1-requirements">3.1 Part 1 Requirements</h3>
+
+<p>You will modify only <code class="language-plaintext highlighter-rouge">cg_impl.c</code> to improve the performance of the CG program, such as inserting OpenMP pragmas to parallelize parts of the program. Of course, you may add any other variables or functions if necessary.</p>
+
+<h3 id="32-part-2-requirements">3.2 Part 2 Requirements</h3>
+
+<p>You will modify only <code class="language-plaintext highlighter-rouge">bfs.cpp</code> and <code class="language-plaintext highlighter-rouge">page_rank.cpp</code> to implement and parallelize the algorithms with OpenMP.</p>
+
+<h2 id="4-grading-policies">4. Grading Policies</h2>
+
+<p><strong>NO CHEATING!!</strong> You will receive no credit if you are found cheating.</p>
+
+<p>We will judge your code with the following aspects:</p>
+<ul>
+  <li>Correctness: Your parallelized program should run faster than the original (serial) program.</li>
+  <li>Scalability: We will evaluate your program with 2, 3, 4 or more threads. Your program is expected to be scalable.</li>
+  <li>Performance: We will compare your code with TA’s solution. You should get a closer or better performance than TA’s implementation.</li>
+</ul>
+
+<p>Total of 110%:</p>
+<ul>
+  <li>Part1 (30%): Refer to <code class="language-plaintext highlighter-rouge">cg/grade.c</code>.</li>
+  <li>Part2 (80%): <code class="language-plaintext highlighter-rouge">page_rank</code> counts for 16% and <code class="language-plaintext highlighter-rouge">breadth_first_search</code> counts for 64%. Refer to <code class="language-plaintext highlighter-rouge">page_rank/grade.cpp</code> and <code class="language-plaintext highlighter-rouge">breadth_first_search/grade.cpp</code>.</li>
+</ul>
+
+<h2 id="5-evaluation-platform">5. Evaluation Platform</h2>
+
+<p>Your program should be able to run on UNIX-like OS platforms. We will evaluate your programs on the workstations dedicated for this course. You can access these workstations by <code class="language-plaintext highlighter-rouge">ssh</code> with the following information.</p>
+
+<p>The workstations are based on Ubuntu 18.04 with Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz processors. <code class="language-plaintext highlighter-rouge">g++-10</code>, <code class="language-plaintext highlighter-rouge">clang++-11</code>, and <code class="language-plaintext highlighter-rouge">libomp5</code> have been installed.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>IP</th>
+      <th>Port</th>
+      <th>User Name</th>
+      <th>Password</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>140.113.215.195</td>
+      <td>37076 ~ 37080, 37091~37094</td>
+      <td>{student_id}</td>
+      <td>{Provided by TA}</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong><em>ATTENTION: Never touch 37095. It is for NIS and NFS.</em></strong></p>
+</blockquote>
+
+<p>Login example:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ssh &lt;student_id&gt;@140.113.215.195 <span class="nt">-p</span> &lt;port&gt;
+</code></pre></div></div>
+
+<p>You can run the graders (built from the source code) on the workstation. <strong>We will use the same grader to judge your code</strong>:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>./cg_grader
+<span class="nv">$ </span>./pr_grader  /HW3/graphs/
+<span class="nv">$ </span>./bfs_grader  /HW3/graphs/
+</code></pre></div></div>
+
+<h2 id="6-submission">6. Submission</h2>
+<p>All your files should be organized in the following hierarchy and zipped into a <code class="language-plaintext highlighter-rouge">.zip</code> file, named <code class="language-plaintext highlighter-rouge">HW3_xxxxxxx.zip</code>, where <code class="language-plaintext highlighter-rouge">xxxxxxx</code> is your student ID.</p>
+
+<p>Directory structure inside the zipped file:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">HW3_xxxxxxx.zip</code> (root)
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">cg_impl.c</code></li>
+      <li><code class="language-plaintext highlighter-rouge">bfs.cpp</code></li>
+      <li><code class="language-plaintext highlighter-rouge">page_rank.cpp</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Zip the files with the following command:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>zip HW3_xxxxxxx.zip cg_impl.c bfs.cpp page_rank.cpp
+</code></pre></div></div>
+
+<p>You can use the testing script <code class="language-plaintext highlighter-rouge">test_hw3</code> to check your answer <em>for reference only</em>. Run <code class="language-plaintext highlighter-rouge">test_hw3</code> in a dictionary that contains your <code class="language-plaintext highlighter-rouge">HW3_XXXXXXX.zip</code> file on the workstation. <code class="language-plaintext highlighter-rouge">test_hw3</code> checks if the zip file is correct, and runs each graders.</p>
+
+<blockquote>
+  <p>Be aware that <code class="language-plaintext highlighter-rouge">test_hw3</code> runs <strong>very heavy work</strong> which results in <strong>high CPU usage</strong>, we recommend you <em>first</em> use <code class="language-plaintext highlighter-rouge">./cg_grader</code>, <code class="language-plaintext highlighter-rouge">./pr_grader</code>, <code class="language-plaintext highlighter-rouge">./bfs_grader</code> to check your programs at local. <strong>Only use <code class="language-plaintext highlighter-rouge">test_hw3</code> before your submission.</strong></p>
+</blockquote>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>test_hw3
+</code></pre></div></div>
+
+<p><strong>You will get <em>NO POINT</em> if your ZIP’s name is wrong or the ZIP hierarchy is incorrect.</strong> (Updated!!)</p>
+
+<p>Be sure to upload your zipped file to new E3 e-Campus system by the due date.</p>
+
+<p><strong>Due Date: 23:55, November 19, Thursday, 2020</strong></p>
+
+<h2 id="7-references">7. References</h2>
+<ul>
+  <li><a href="http://openmp.org/">OpenMP Official Website</a></li>
+  <li><a href="https://www.openmp.org/spec-html/5.0/openmp.html">OpenMP5 SPEC</a></li>
+  <li><a href="https://computing.llnl.gov/tutorials/openMP/">OpenMP Tutorial</a></li>
+  <li><a href="https://releases.llvm.org/11.0.0/tools/clang/docs/OpenMPSupport.html">Clang11 OpenMP Support</a></li>
+  <li><a href="https://linux.die.net/man/1/time">Linux TIME Manual</a></li>
+  <li><a href="https://tigercosmos.xyz/post/2020/08/system/perf-basic/">在 Linux 上使用 Perf 做效能分析(入門篇)</a></li>
+  <li><a href="https://en.wikipedia.org/wiki/Parallel_breadth-first_search">Wikipedia: Parallel breadth-first search</a></li>
+  <li><a href="https://tigercosmos.xyz/post/2020/10/system/cas-lock-free/">使用 Compare and Swap 做到 Lock Free</a></li>
+</ul>
+
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/nctu-sslab/PP-f20">PP-f20</a> is maintained by <a href="https://github.com/nctu-sslab">nctu-sslab</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com/">GitHub Pages</a>.</span>
+      </footer>
+    </section>
+
+    
+  
+
+<div id="5e4d6c01-0e02-4694-aa80-d578b86e6328-bottom"></div></body><div id="shopback-app" style="z-index: 2147483647 !important; display: block !important;"></div></html>

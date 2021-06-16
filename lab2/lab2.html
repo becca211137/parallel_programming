@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)https://nctu-sslab.github.io/PP-f20/HW2/ -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Parallel Programming @ NCTU, Fall 2020 | This is the webpage for the Parallel Programming course</title>
+<meta name="generator" content="Jekyll v3.9.0">
+<meta property="og:title" content="Parallel Programming @ NCTU, Fall 2020">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="This is the webpage for the Parallel Programming course">
+<meta property="og:description" content="This is the webpage for the Parallel Programming course">
+<link rel="canonical" href="https://nctu-sslab.github.io/PP-f20/HW2/">
+<meta property="og:url" content="https://nctu-sslab.github.io/PP-f20/HW2/">
+<meta property="og:site_name" content="Parallel Programming @ NCTU, Fall 2020">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Parallel Programming @ NCTU, Fall 2020">
+<script type="application/ld+json">
+{"description":"This is the webpage for the Parallel Programming course","headline":"Parallel Programming @ NCTU, Fall 2020","url":"https://nctu-sslab.github.io/PP-f20/HW2/","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="./lab2_files/style.css">
+  <style shopback-extension-v6-5-2="" data-styled-version="4.2.0"></style><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+  <body><div id="MathJax_Message" style="display: none;"></div>
+    <section class="page-header">
+      <h1 class="project-name">Parallel Programming @ NCTU, Fall 2020</h1>
+      <h2 class="project-tagline">This is the webpage for the Parallel Programming course</h2>
+      
+        <a href="https://github.com/nctu-sslab/PP-f20" class="btn">View on GitHub</a>
+      
+      
+    </section>
+
+    <section class="main-content">
+      <script type="text/javascript" src="./lab2_files/MathJax.js.下載" async=""> </script>
+<script type="text/x-mathjax-config;executed=true"> MathJax.Hub.Config({'HTML-CSS': { preferredFont: 'TeX', availableFonts: ['STIX','TeX'], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) }, tex2jax: { inlineMath: [ ['$', '$'] ], processEscapes: true, ignoreClass: 'tex2jax_ignore|dno',skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']}, TeX: {  noUndefined: { attributes: { mathcolor: 'red', mathbackground: '#FFEEEE', mathsize: '90%' } }, Macros: { href: '{}' } }, messageStyle: 'none' }); MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i=0; i < all.length; i += 1) { all[i].SourceElement().parentNode.className += ' has-jax'; } }); </script>
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TP966Z8H9W"></script>
+<script> window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-TP966Z8H9W',{'page_path': location.pathname + location.search + location.hash}); </script>
+
+<h1 id="programming-assignment-ii-multi-thread-programming">Programming Assignment II: Multi-thread Programming</h1>
+
+<p>The purpose of this assignment is to familiarize yourself with Pthread and std::thread programming in C and C++, respectively. You will also gain experience measuring and reasoning about the performance of parallel programs (a challenging, but important, skill you will use throughout this class). This assignment involves only a small amount of programming, but a lot of analysis!</p>
+
+<h2 id="1-part-1-parallel-counting-pi-using-pthreads">1. Part 1: Parallel Counting PI Using Pthreads</h2>
+
+<h3 id="11-problem-statement">1.1 Problem Statement</h3>
+
+<p>This is a follow-up assignment from Assignment ZERO. You are asked to turn the serial program into a Pthreads program that uses a Monte Carlo method to estimate PI. The main thread should read in the total number of tosses and print the estimate. You may want to use <code class="language-plaintext highlighter-rouge">long long int</code>s for the number of hits in the circle and the number of tosses, since both may have to be very large to get a reasonable estimate of PI.</p>
+
+<p>Your mission is to make the program as fast as possible. You may consider a lot of methods to improve the speed, such as SIMD intrinsics or a faster random number generator. However, you cannot break the following rules: you need to implement the Monte Carlo method using Pthreads.</p>
+
+<p>Hint: You may want to use a reentrant and thread-safe random number generator.</p>
+
+<p>You are allowed to use third-party libraries in this part, such as pseudorandom number generators or SIMD intrinsics.</p>
+
+<h3 id="12-requirements">1.2 <a name="part1_requirements"></a>Requirements</h3>
+<ul>
+  <li>Typing <code class="language-plaintext highlighter-rouge">make</code> in the <code class="language-plaintext highlighter-rouge">part1</code> directory should build the code and create an executable called <code class="language-plaintext highlighter-rouge">pi.out</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">pi.out</code> takes two command-line arguments, which indicate the number of threads and the number of tosses, respectively. The value of the first and second arguments will not exceed the range of <code class="language-plaintext highlighter-rouge">int</code> and <code class="language-plaintext highlighter-rouge">long long int</code>, respectively. <code class="language-plaintext highlighter-rouge">pi.out</code> should work well for all legal inputs.</li>
+  <li><code class="language-plaintext highlighter-rouge">pi.out</code> should output (to stdout) the estimated PI value, which is <strong>accurate to three decimal places</strong> (i.e., 3.141xxx) with at least <code class="language-plaintext highlighter-rouge">1e8</code> tosses.</li>
+</ul>
+
+<p>Example:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>make <span class="o">&amp;&amp;</span> ./pi.out 8 1000000000
+3.1415926....
+</code></pre></div></div>
+
+<h2 id="2-part-2-parallel-fractal-generation-using-stdthread">2. Part 2: Parallel Fractal Generation Using std::thread</h2>
+
+<h3 id="21-problem-statement">2.1 Problem Statement</h3>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> &lt;your_workplace&gt;
+<span class="nv">$ </span>wget https://nctu-sslab.github.io/PP-f20/HW2/HW2_part2.zip
+<span class="nv">$ </span>unzip HW2_part2.zip <span class="nt">-d</span> part2
+</code></pre></div></div>
+
+<p>Build and run the code in the <code class="language-plaintext highlighter-rouge">part2</code> directory of the code base. (Type <code class="language-plaintext highlighter-rouge">make</code> to build, and <code class="language-plaintext highlighter-rouge">./mandelbrot</code> to run it. <code class="language-plaintext highlighter-rouge">./mandelbrot --help</code> displays the usage information.)</p>
+
+<p>This program produces the image file <code class="language-plaintext highlighter-rouge">mandelbrot-serial.ppm</code>, which is a visualization of a famous set of complex numbers called the Mandelbrot set. [Most platforms have a <code class="language-plaintext highlighter-rouge">.ppm</code> viewer. For example, to view the resulting images, use <a href="https://github.com/stefanhaustein/TerminalImageViewer.git">tiv</a> command (already installed) to display them on the terminal.]</p>
+
+<p>As you can see in the images below, the result is a familiar and beautiful fractal. Each pixel in the image corresponds to a value in the complex plane, and the brightness of each pixel is proportional to the computational cost of determining whether the value is contained in the Mandelbrot set. To get image 2, use the command option <code class="language-plaintext highlighter-rouge">--view 2</code>.  (See function <code class="language-plaintext highlighter-rouge">mandelbrotSerial()</code> defined in <code class="language-plaintext highlighter-rouge">mandelbrotSerial.cpp</code>). You can learn more about the definition of the <a href="http://en.wikipedia.org/wiki/Mandelbrot_set">Mandelbrot set</a>.</p>
+
+<p><img src="./lab2_files/687474703a2f2f67726170686963732e7374616e666f72642e6564752f636f75727365732f6373333438762d31382d77696e7465722f617373745f696d616765732f61737374312f6d616e64656c62726f745f76697a2e6a7067" alt="Mandelbrot Set"></p>
+
+<p>Your job is to parallelize the computation of the images using 
+<a href="https://en.cppreference.com/w/cpp/thread/thread">std::thread</a>. Starter code that spawns one additional thread is provided in the function <code class="language-plaintext highlighter-rouge">mandelbrotThread()</code> located in <code class="language-plaintext highlighter-rouge">mandelbrotThread.cpp</code>. In this function, the main application thread creates another additional thread using the constructor <code class="language-plaintext highlighter-rouge">std::thread</code> (function, args…). It waits for this thread to complete by calling <code class="language-plaintext highlighter-rouge">join</code> on the thread object.</p>
+
+<p>Currently the launched thread does not do any computation and returns immediately. You should add code to <code class="language-plaintext highlighter-rouge">workerThreadStart</code> function to accomplish this task. You will not need to make use of any other <code class="language-plaintext highlighter-rouge">std::thread</code> API calls in this assignment.</p>
+
+<h3 id="22-requirements">2.2 Requirements</h3>
+
+<p>You will need to meet the following requirements and answer the questions (marked with “<strong>Q1-Q4</strong>”) in a <strong>REPORT</strong> using <a href="https://hackmd.io/">HackMD</a>.</p>
+
+<ol>
+  <li>Modify the starter code to parallelize the Mandelbrot generation using two processors. Specifically, compute the top half of the image in thread 0, and the bottom half of the image in thread 1. This type of problem decomposition is referred to as <strong><em>spatial decomposition</em></strong> since different spatial regions of the image are computed by different processors.</li>
+  <li>Extend your code to use 2, 3, 4 threads, partitioning the image generation work accordingly (threads should get blocks of the image). <!-- Note that the processor only has four cores but each core supports two hyper-threads, so it can execute a total of eight threads interleaved on its execution contents (Sorry, NCTU gave us no hyper thread servers)-->
+<strong>Q1</strong>: In your write-up, produce a graph of <strong>speedup compared to the reference sequential implementation</strong> as a function of the number of threads used <strong>FOR VIEW 1</strong>. Is speedup linear in the number of threads used? In your writeup hypothesize why this is (or is not) the case? (You may also wish to produce a graph for VIEW 2 to help you come up with a good answer. Hint: take a careful look at the three-thread data-point.)</li>
+  <li>To confirm (or disprove) your hypothesis, measure the amount of time each thread requires to complete its work by inserting timing code at the beginning and end of <code class="language-plaintext highlighter-rouge">workerThreadStart()</code>. <strong>Q2</strong>: How do your measurements explain the speedup graph you previously created?</li>
+  <li>Modify the mapping of work to threads to achieve to improve speedup to at <strong>about 3-4x on both views</strong> of the Mandelbrot set (if you’re above 3.5x that’s fine, don’t sweat it). You may not use any synchronization between threads in your solution. We are expecting you to come up with a single work <strong><em>decomposition policy</em></strong> that will work well for all thread counts—hard coding a solution specific to each configuration is not allowed! (Hint: There is a very simple static assignment that will achieve this goal, and no communication/synchronization among threads is necessary.).
+ <strong>Q3</strong>: In your write-up, describe your approach to parallelization and report the final 4-thread speedup obtained.</li>
+  <li><strong>Q4</strong>: Now run your improved code with eight threads. Is performance noticeably greater than when running with four threads? Why or why not? (Notice that the workstation server provides 4 cores 4 threads.)</li>
+</ol>
+
+<h2 id="3-grading-policy">3. Grading Policy</h2>
+
+<p><strong>NO CHEATING!!</strong> You will receive no credit if you are found cheating. Don’t take any chances. 😉</p>
+
+<p>Total of 100%:</p>
+<ul>
+  <li>Part 1 (40%):
+    <ul>
+      <li>Correctness (30%): The <a href="https://nctu-sslab.github.io/PP-f20/HW2/#part1_requirements">requirements</a> should be met, and your parallelized program should run faster than the original (serial) program. Notice that you will receive <strong>no credit</strong> if one of the two aforementioned conditions fails.</li>
+      <li>Scalability (30%): We will evaluate your program with 2, 3, 4 or more threads. Your program is expected to be scalable.</li>
+      <li>Performance (40%): See the metrics below for details. The maximum time limit for running <code class="language-plaintext highlighter-rouge">$time (./pi.out 3 100000000; ./pi.out 4 100000000)</code> on the workstation is <code class="language-plaintext highlighter-rouge">T=1.00</code>.</li>
+    </ul>
+  </li>
+  <li>Part 2 (60%):
+    <ul>
+      <li>Correctness (30%): Your parallelized program should pass the verification (written in <code class="language-plaintext highlighter-rouge">main.cpp</code>) and run faster than the original (serial) program. Notice that you are not allowed to modify files other than <code class="language-plaintext highlighter-rouge">mandelbrotThread.cpp</code> and you will receive <strong>no credit</strong> if one of the two aforementioned conditions fails.</li>
+      <li>Performance (30%): See the metrics below for details. The maximum time limit for running <code class="language-plaintext highlighter-rouge">$./mandelbrot -t 3</code> plus <code class="language-plaintext highlighter-rouge">$./mandelbrot -t 4</code> on the workstation is <code class="language-plaintext highlighter-rouge">T=0.375</code> (considering only the time of <code class="language-plaintext highlighter-rouge">mandelbrot thread</code>).</li>
+      <li>Questions (40%): Each question contributes 10%. Answers to each question will be classified into one of the four reward tiers: excellent (10%), good (7%), normal (3%), and terrible (0%).</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p>Performance metrics (100%):</p>
+  <ul>
+    <li>Maximum time limit (60%): Your program need to run within the running time threshold, <code class="language-plaintext highlighter-rouge">T</code> seconds.</li>
+    <li>Competitiveness (40%): You will compete with others in the class to get the other 40%: Your score is calculated by <code class="language-plaintext highlighter-rouge">(T-Y)/(T-F) * 40%</code>, where <code class="language-plaintext highlighter-rouge">Y</code>, <code class="language-plaintext highlighter-rouge">T</code>, and <code class="language-plaintext highlighter-rouge">F</code> indicate the execution time of your program, the threshold, and the fastest program, respectively.</li>
+  </ul>
+</blockquote>
+
+<h2 id="4-evaluation-platform">4. Evaluation Platform</h2>
+
+<p>Your program should be able to run on UNIX-like OS platforms. We will evaluate your programs on the workstations dedicated for this course. You can access these workstations by <code class="language-plaintext highlighter-rouge">ssh</code> with the following information.</p>
+
+<p>The workstations are based on Ubuntu 18.04 with Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz processors. <code class="language-plaintext highlighter-rouge">g++-10</code> and <code class="language-plaintext highlighter-rouge">clang++-11</code> have been installed.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>IP</th>
+      <th>Port</th>
+      <th>User Name</th>
+      <th>Password</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>140.113.215.195</td>
+      <td>37076 ~ 37080</td>
+      <td>{student_id}</td>
+      <td>{Provided by TA}</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>Login example:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ssh &lt;student_id&gt;@140.113.215.195 <span class="nt">-p</span> &lt;port&gt;
+</code></pre></div></div>
+
+<h2 id="5-submission">5. Submission</h2>
+
+<p>All your files should be organized in the following hierarchy and zipped into a <code class="language-plaintext highlighter-rouge">.zip</code> file, named <code class="language-plaintext highlighter-rouge">HW2_xxxxxxx.zip</code>, where <code class="language-plaintext highlighter-rouge">xxxxxxx</code> is your student ID.</p>
+
+<p>Directory structure inside the zipped file:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">HW2_xxxxxxx.zip</code> (root)
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">part1</code> (directory)
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">Makefile</code></li>
+          <li><code class="language-plaintext highlighter-rouge">pi.c</code> or <code class="language-plaintext highlighter-rouge">pi.cpp</code></li>
+          <li>other C/C++ files</li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">part2</code> (directory)
+        <ul>
+          <li><code class="language-plaintext highlighter-rouge">mandelbrotThread.cpp</code></li>
+        </ul>
+      </li>
+      <li><code class="language-plaintext highlighter-rouge">url.txt</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Notice that you just need to provide the URL of your HackMD report in <code class="language-plaintext highlighter-rouge">url.txt</code>, and enable the write permission for someone who knows the URL so that TAs can give you feedback directly in your report.</p>
+
+<p>You can use the testing script to check your answer <em>for reference only</em>. Run <code class="language-plaintext highlighter-rouge">test_hw2</code> in a dictionary that contains your <code class="language-plaintext highlighter-rouge">HW2_XXXXXXX.zip</code> file.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>test_hw2
+</code></pre></div></div>
+
+<p>Please make sure you pass the testing script and then upload your zipped file to new E3 e-Campus system by the due date.</p>
+
+<p><strong>You will get <em>NO POINT</em> if your ZIP’s name is wrong or the ZIP hierarchy is incorrect.</strong></p>
+
+<p><strong>Due Date: 23:55, November 5, Thursday, 2020</strong></p>
+
+<h2 id="6-references">6. <a name="References">References</a></h2>
+
+<p>There are some some resources for you:</p>
+
+<ul>
+  <li><a href="https://computing.llnl.gov/tutorials/pthreads/">POSIX Threads Programming</a></li>
+  <li><a href="https://tigercosmos.xyz/post/2020/07/simple-pthread-usage/">簡易 Pthreads 平行化範例與效能分析</a></li>
+  <li><a href="https://tigercosmos.xyz/post/2021/05/system/reentrant-and-thread-safe-code/">深入理解 Reentrancy 和 Thread-safe</a></li>
+</ul>
+
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/nctu-sslab/PP-f20">PP-f20</a> is maintained by <a href="https://github.com/nctu-sslab">nctu-sslab</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com/">GitHub Pages</a>.</span>
+      </footer>
+    </section>
+
+    
+  
+
+<div id="b2267af1-d761-4a6d-a34f-5a58ed0b19ac-bottom"></div></body><div id="shopback-app" style="z-index: 2147483647 !important; display: block !important;"></div></html>

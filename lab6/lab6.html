@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)https://nctu-sslab.github.io/PP-f20/HW6/ -->
+<html lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Parallel Programming @ NCTU, Fall 2020 | This is the webpage for the Parallel Programming course</title>
+<meta name="generator" content="Jekyll v3.9.0">
+<meta property="og:title" content="Parallel Programming @ NCTU, Fall 2020">
+<meta property="og:locale" content="en_US">
+<meta name="description" content="This is the webpage for the Parallel Programming course">
+<meta property="og:description" content="This is the webpage for the Parallel Programming course">
+<link rel="canonical" href="https://nctu-sslab.github.io/PP-f20/HW6/">
+<meta property="og:url" content="https://nctu-sslab.github.io/PP-f20/HW6/">
+<meta property="og:site_name" content="Parallel Programming @ NCTU, Fall 2020">
+<meta name="twitter:card" content="summary">
+<meta property="twitter:title" content="Parallel Programming @ NCTU, Fall 2020">
+<script type="application/ld+json">
+{"description":"This is the webpage for the Parallel Programming course","headline":"Parallel Programming @ NCTU, Fall 2020","url":"https://nctu-sslab.github.io/PP-f20/HW6/","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#157878">
+    <link rel="stylesheet" href="./lab6_files/style.css">
+  <style shopback-extension-v6-5-2="" data-styled-version="4.2.0"></style><style type="text/css">.MathJax_Hover_Frame {border-radius: .25em; -webkit-border-radius: .25em; -moz-border-radius: .25em; -khtml-border-radius: .25em; box-shadow: 0px 0px 15px #83A; -webkit-box-shadow: 0px 0px 15px #83A; -moz-box-shadow: 0px 0px 15px #83A; -khtml-box-shadow: 0px 0px 15px #83A; border: 1px solid #A6D ! important; display: inline-block; position: absolute}
+.MathJax_Menu_Button .MathJax_Hover_Arrow {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; -khtml-border-radius: 4px; font-family: 'Courier New',Courier; font-size: 9px; color: #F0F0F0}
+.MathJax_Menu_Button .MathJax_Hover_Arrow span {display: block; background-color: #AAA; border: 1px solid; border-radius: 3px; line-height: 0; padding: 4px}
+.MathJax_Hover_Arrow:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_Hover_Arrow:hover span {background-color: #CCC!important}
+</style><style type="text/css">#MathJax_About {position: fixed; left: 50%; width: auto; text-align: center; border: 3px outset; padding: 1em 2em; background-color: #DDDDDD; color: black; cursor: default; font-family: message-box; font-size: 120%; font-style: normal; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px; -khtml-border-radius: 15px; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_About.MathJax_MousePost {outline: none}
+.MathJax_Menu {position: absolute; background-color: white; color: black; width: auto; padding: 2px; border: 1px solid #CCCCCC; margin: 0; cursor: default; font: menu; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; z-index: 201; box-shadow: 0px 10px 20px #808080; -webkit-box-shadow: 0px 10px 20px #808080; -moz-box-shadow: 0px 10px 20px #808080; -khtml-box-shadow: 0px 10px 20px #808080; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+.MathJax_MenuItem {padding: 2px 2em; background: transparent}
+.MathJax_MenuArrow {position: absolute; right: .5em; padding-top: .25em; color: #666666; font-size: .75em}
+.MathJax_MenuActive .MathJax_MenuArrow {color: white}
+.MathJax_MenuArrow.RTL {left: .5em; right: auto}
+.MathJax_MenuCheck {position: absolute; left: .7em}
+.MathJax_MenuCheck.RTL {right: .7em; left: auto}
+.MathJax_MenuRadioCheck {position: absolute; left: 1em}
+.MathJax_MenuRadioCheck.RTL {right: 1em; left: auto}
+.MathJax_MenuLabel {padding: 2px 2em 4px 1.33em; font-style: italic}
+.MathJax_MenuRule {border-top: 1px solid #CCCCCC; margin: 4px 1px 0px}
+.MathJax_MenuDisabled {color: GrayText}
+.MathJax_MenuActive {background-color: Highlight; color: HighlightText}
+.MathJax_MenuDisabled:focus, .MathJax_MenuLabel:focus {background-color: #E8E8E8}
+.MathJax_ContextMenu:focus {outline: none}
+.MathJax_ContextMenu .MathJax_MenuItem:focus {outline: none}
+#MathJax_AboutClose {top: .2em; right: .2em}
+.MathJax_Menu .MathJax_MenuClose {top: -10px; left: -10px}
+.MathJax_MenuClose {position: absolute; cursor: pointer; display: inline-block; border: 2px solid #AAA; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; font-family: 'Courier New',Courier; font-size: 24px; color: #F0F0F0}
+.MathJax_MenuClose span {display: block; background-color: #AAA; border: 1.5px solid; border-radius: 18px; -webkit-border-radius: 18px; -moz-border-radius: 18px; -khtml-border-radius: 18px; line-height: 0; padding: 8px 0 6px}
+.MathJax_MenuClose:hover {color: white!important; border: 2px solid #CCC!important}
+.MathJax_MenuClose:hover span {background-color: #CCC!important}
+.MathJax_MenuClose:hover:focus {outline: none}
+</style><style type="text/css">.MathJax_Preview .MJXf-math {color: inherit!important}
+</style><style type="text/css">.MJX_Assistive_MathML {position: absolute!important; top: 0; left: 0; clip: rect(1px, 1px, 1px, 1px); padding: 1px 0 0 0!important; border: 0!important; height: 1px!important; width: 1px!important; overflow: hidden!important; display: block!important; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none}
+.MJX_Assistive_MathML.MJX_Assistive_MathML_Block {width: 100%!important}
+</style><style type="text/css">#MathJax_Zoom {position: absolute; background-color: #F0F0F0; overflow: auto; display: block; z-index: 301; padding: .5em; border: 1px solid black; margin: 0; font-weight: normal; font-style: normal; text-align: left; text-indent: 0; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; -webkit-box-sizing: content-box; -moz-box-sizing: content-box; box-sizing: content-box; box-shadow: 5px 5px 15px #AAAAAA; -webkit-box-shadow: 5px 5px 15px #AAAAAA; -moz-box-shadow: 5px 5px 15px #AAAAAA; -khtml-box-shadow: 5px 5px 15px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true')}
+#MathJax_ZoomOverlay {position: absolute; left: 0; top: 0; z-index: 300; display: inline-block; width: 100%; height: 100%; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+#MathJax_ZoomFrame {position: relative; display: inline-block; height: 0; width: 0}
+#MathJax_ZoomEventTrap {position: absolute; left: 0; top: 0; z-index: 302; display: inline-block; border: 0; padding: 0; margin: 0; background-color: white; opacity: 0; filter: alpha(opacity=0)}
+</style><style type="text/css">.MathJax_Preview {color: #888}
+#MathJax_Message {position: fixed; left: 1em; bottom: 1.5em; background-color: #E6E6E6; border: 1px solid #959595; margin: 0px; padding: 2px 8px; z-index: 102; color: black; font-size: 80%; width: auto; white-space: nowrap}
+#MathJax_MSIE_Frame {position: absolute; top: 0; left: 0; width: 0px; z-index: 101; border: 0px; margin: 0px; padding: 0px}
+.MathJax_Error {color: #CC0000; font-style: italic}
+</style><style type="text/css">.MJXp-script {font-size: .8em}
+.MJXp-right {-webkit-transform-origin: right; -moz-transform-origin: right; -ms-transform-origin: right; -o-transform-origin: right; transform-origin: right}
+.MJXp-bold {font-weight: bold}
+.MJXp-italic {font-style: italic}
+.MJXp-scr {font-family: MathJax_Script,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-frak {font-family: MathJax_Fraktur,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-sf {font-family: MathJax_SansSerif,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-cal {font-family: MathJax_Caligraphic,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-mono {font-family: MathJax_Typewriter,'Times New Roman',Times,STIXGeneral,serif}
+.MJXp-largeop {font-size: 150%}
+.MJXp-largeop.MJXp-int {vertical-align: -.2em}
+.MJXp-math {display: inline-block; line-height: 1.2; text-indent: 0; font-family: 'Times New Roman',Times,STIXGeneral,serif; white-space: nowrap; border-collapse: collapse}
+.MJXp-display {display: block; text-align: center; margin: 1em 0}
+.MJXp-math span {display: inline-block}
+.MJXp-box {display: block!important; text-align: center}
+.MJXp-box:after {content: " "}
+.MJXp-rule {display: block!important; margin-top: .1em}
+.MJXp-char {display: block!important}
+.MJXp-mo {margin: 0 .15em}
+.MJXp-mfrac {margin: 0 .125em; vertical-align: .25em}
+.MJXp-denom {display: inline-table!important; width: 100%}
+.MJXp-denom > * {display: table-row!important}
+.MJXp-surd {vertical-align: top}
+.MJXp-surd > * {display: block!important}
+.MJXp-script-box > *  {display: table!important; height: 50%}
+.MJXp-script-box > * > * {display: table-cell!important; vertical-align: top}
+.MJXp-script-box > *:last-child > * {vertical-align: bottom}
+.MJXp-script-box > * > * > * {display: block!important}
+.MJXp-mphantom {visibility: hidden}
+.MJXp-munderover, .MJXp-munder {display: inline-table!important}
+.MJXp-over {display: inline-block!important; text-align: center}
+.MJXp-over > * {display: block!important}
+.MJXp-munderover > *, .MJXp-munder > * {display: table-row!important}
+.MJXp-mtable {vertical-align: .25em; margin: 0 .125em}
+.MJXp-mtable > * {display: inline-table!important; vertical-align: middle}
+.MJXp-mtr {display: table-row!important}
+.MJXp-mtd {display: table-cell!important; text-align: center; padding: .5em 0 0 .5em}
+.MJXp-mtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-mlabeledtr {display: table-row!important}
+.MJXp-mlabeledtr > .MJXp-mtd:first-child {padding-left: 0}
+.MJXp-mlabeledtr:first-child > .MJXp-mtd {padding-top: 0}
+.MJXp-merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MJXp-scale0 {-webkit-transform: scaleX(.0); -moz-transform: scaleX(.0); -ms-transform: scaleX(.0); -o-transform: scaleX(.0); transform: scaleX(.0)}
+.MJXp-scale1 {-webkit-transform: scaleX(.1); -moz-transform: scaleX(.1); -ms-transform: scaleX(.1); -o-transform: scaleX(.1); transform: scaleX(.1)}
+.MJXp-scale2 {-webkit-transform: scaleX(.2); -moz-transform: scaleX(.2); -ms-transform: scaleX(.2); -o-transform: scaleX(.2); transform: scaleX(.2)}
+.MJXp-scale3 {-webkit-transform: scaleX(.3); -moz-transform: scaleX(.3); -ms-transform: scaleX(.3); -o-transform: scaleX(.3); transform: scaleX(.3)}
+.MJXp-scale4 {-webkit-transform: scaleX(.4); -moz-transform: scaleX(.4); -ms-transform: scaleX(.4); -o-transform: scaleX(.4); transform: scaleX(.4)}
+.MJXp-scale5 {-webkit-transform: scaleX(.5); -moz-transform: scaleX(.5); -ms-transform: scaleX(.5); -o-transform: scaleX(.5); transform: scaleX(.5)}
+.MJXp-scale6 {-webkit-transform: scaleX(.6); -moz-transform: scaleX(.6); -ms-transform: scaleX(.6); -o-transform: scaleX(.6); transform: scaleX(.6)}
+.MJXp-scale7 {-webkit-transform: scaleX(.7); -moz-transform: scaleX(.7); -ms-transform: scaleX(.7); -o-transform: scaleX(.7); transform: scaleX(.7)}
+.MJXp-scale8 {-webkit-transform: scaleX(.8); -moz-transform: scaleX(.8); -ms-transform: scaleX(.8); -o-transform: scaleX(.8); transform: scaleX(.8)}
+.MJXp-scale9 {-webkit-transform: scaleX(.9); -moz-transform: scaleX(.9); -ms-transform: scaleX(.9); -o-transform: scaleX(.9); transform: scaleX(.9)}
+.MathJax_PHTML .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style><style type="text/css">.MathJax_Display {text-align: center; margin: 1em 0em; position: relative; display: block!important; text-indent: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; width: 100%}
+.MathJax .merror {background-color: #FFFF88; color: #CC0000; border: 1px solid #CC0000; padding: 1px 3px; font-style: normal; font-size: 90%}
+.MathJax .MJX-monospace {font-family: monospace}
+.MathJax .MJX-sans-serif {font-family: sans-serif}
+#MathJax_Tooltip {background-color: InfoBackground; color: InfoText; border: 1px solid black; box-shadow: 2px 2px 5px #AAAAAA; -webkit-box-shadow: 2px 2px 5px #AAAAAA; -moz-box-shadow: 2px 2px 5px #AAAAAA; -khtml-box-shadow: 2px 2px 5px #AAAAAA; filter: progid:DXImageTransform.Microsoft.dropshadow(OffX=2, OffY=2, Color='gray', Positive='true'); padding: 3px 4px; z-index: 401; position: absolute; left: 0; top: 0; width: auto; height: auto; display: none}
+.MathJax {display: inline; font-style: normal; font-weight: normal; line-height: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-align: left; text-transform: none; letter-spacing: normal; word-spacing: normal; word-wrap: normal; white-space: nowrap; float: none; direction: ltr; max-width: none; max-height: none; min-width: 0; min-height: 0; border: 0; padding: 0; margin: 0}
+.MathJax:focus, body :focus .MathJax {display: inline-table}
+.MathJax.MathJax_FullWidth {text-align: center; display: table-cell!important; width: 10000em!important}
+.MathJax img, .MathJax nobr, .MathJax a {border: 0; padding: 0; margin: 0; max-width: none; max-height: none; min-width: 0; min-height: 0; vertical-align: 0; line-height: normal; text-decoration: none}
+img.MathJax_strut {border: 0!important; padding: 0!important; margin: 0!important; vertical-align: 0!important}
+.MathJax span {display: inline; position: static; border: 0; padding: 0; margin: 0; vertical-align: 0; line-height: normal; text-decoration: none; box-sizing: content-box}
+.MathJax nobr {white-space: nowrap!important}
+.MathJax img {display: inline!important; float: none!important}
+.MathJax * {transition: none; -webkit-transition: none; -moz-transition: none; -ms-transition: none; -o-transition: none}
+.MathJax_Processing {visibility: hidden; position: fixed; width: 0; height: 0; overflow: hidden}
+.MathJax_Processed {display: none!important}
+.MathJax_test {font-style: normal; font-weight: normal; font-size: 100%; font-size-adjust: none; text-indent: 0; text-transform: none; letter-spacing: normal; word-spacing: normal; overflow: hidden; height: 1px}
+.MathJax_test.mjx-test-display {display: table!important}
+.MathJax_test.mjx-test-inline {display: inline!important; margin-right: -1px}
+.MathJax_test.mjx-test-default {display: block!important; clear: both}
+.MathJax_ex_box {display: inline-block!important; position: absolute; overflow: hidden; min-height: 0; max-height: none; padding: 0; border: 0; margin: 0; width: 1px; height: 60ex}
+.MathJax_em_box {display: inline-block!important; position: absolute; overflow: hidden; min-height: 0; max-height: none; padding: 0; border: 0; margin: 0; width: 1px; height: 60em}
+.mjx-test-inline .MathJax_left_box {display: inline-block; width: 0; float: left}
+.mjx-test-inline .MathJax_right_box {display: inline-block; width: 0; float: right}
+.mjx-test-display .MathJax_right_box {display: table-cell!important; width: 10000em!important; min-width: 0; max-width: none; padding: 0; border: 0; margin: 0}
+.MathJax .MathJax_HitBox {cursor: text; background: white; opacity: 0; filter: alpha(opacity=0)}
+.MathJax .MathJax_HitBox * {filter: none; opacity: 1; background: transparent}
+#MathJax_Tooltip * {filter: none; opacity: 1; background: transparent}
+@font-face {font-family: MathJax_Main; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/woff/MathJax_Main-Regular.woff?V=2.7.7') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/otf/MathJax_Main-Regular.otf?V=2.7.7') format('opentype')}
+@font-face {font-family: MathJax_Main-bold; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/woff/MathJax_Main-Bold.woff?V=2.7.7') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/otf/MathJax_Main-Bold.otf?V=2.7.7') format('opentype')}
+@font-face {font-family: MathJax_Main-italic; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/woff/MathJax_Main-Italic.woff?V=2.7.7') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/otf/MathJax_Main-Italic.otf?V=2.7.7') format('opentype')}
+@font-face {font-family: MathJax_Math-italic; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/woff/MathJax_Math-Italic.woff?V=2.7.7') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/otf/MathJax_Math-Italic.otf?V=2.7.7') format('opentype')}
+@font-face {font-family: MathJax_Caligraphic; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/woff/MathJax_Caligraphic-Regular.woff?V=2.7.7') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/otf/MathJax_Caligraphic-Regular.otf?V=2.7.7') format('opentype')}
+@font-face {font-family: MathJax_Size1; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/woff/MathJax_Size1-Regular.woff?V=2.7.7') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/otf/MathJax_Size1-Regular.otf?V=2.7.7') format('opentype')}
+@font-face {font-family: MathJax_Size2; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/woff/MathJax_Size2-Regular.woff?V=2.7.7') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/otf/MathJax_Size2-Regular.otf?V=2.7.7') format('opentype')}
+@font-face {font-family: MathJax_Size3; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/woff/MathJax_Size3-Regular.woff?V=2.7.7') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/otf/MathJax_Size3-Regular.otf?V=2.7.7') format('opentype')}
+@font-face {font-family: MathJax_Size4; src: url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/woff/MathJax_Size4-Regular.woff?V=2.7.7') format('woff'), url('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/fonts/HTML-CSS/TeX/otf/MathJax_Size4-Regular.otf?V=2.7.7') format('opentype')}
+.MathJax .noError {vertical-align: ; font-size: 90%; text-align: left; color: black; padding: 1px 3px; border: 1px solid}
+</style></head>
+  <body><div style="visibility: hidden; overflow: hidden; position: absolute; top: 0px; height: 1px; width: auto; padding: 0px; border: 0px; margin: 0px; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal;"><div id="MathJax_Hidden"></div></div><div id="MathJax_Message" style="display: none;"></div>
+    <section class="page-header">
+      <h1 class="project-name">Parallel Programming @ NCTU, Fall 2020</h1>
+      <h2 class="project-tagline">This is the webpage for the Parallel Programming course</h2>
+      
+        <a href="https://github.com/nctu-sslab/PP-f20" class="btn">View on GitHub</a>
+      
+      
+    </section>
+
+    <section class="main-content has-jax">
+      <script type="text/javascript" src="./lab6_files/MathJax.js.下載" async=""> </script>
+<script type="text/x-mathjax-config;executed=true"> MathJax.Hub.Config({'HTML-CSS': { preferredFont: 'TeX', availableFonts: ['STIX','TeX'], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) }, tex2jax: { inlineMath: [ ['$', '$'] ], processEscapes: true, ignoreClass: 'tex2jax_ignore|dno',skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']}, TeX: {  noUndefined: { attributes: { mathcolor: 'red', mathbackground: '#FFEEEE', mathsize: '90%' } }, Macros: { href: '{}' } }, messageStyle: 'none' }); MathJax.Hub.Queue(function() { var all = MathJax.Hub.getAllJax(), i; for(i=0; i < all.length; i += 1) { all[i].SourceElement().parentNode.className += ' has-jax'; } }); </script>
+
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-TP966Z8H9W"></script>
+<script> window.dataLayer = window.dataLayer || [];  function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-TP966Z8H9W',{'page_path': location.pathname + location.search + location.hash}); </script>
+
+<h1 id="assignment-vi-opencl-programming">Assignment VI: OpenCL Programming</h1>
+
+<p>The purpose of this assignment is to familiarize yourself with OpenCL programming.</p>
+
+<p>Get the source code:</p>
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">cd</span> &lt;your_workplace&gt;
+<span class="nv">$ </span>wget https://nctu-sslab.github.io/PP-f20/HW6/HW6.zip
+<span class="nv">$ </span>unzip HW6.zip <span class="nt">-d</span> HW6
+</code></pre></div></div>
+
+<p>Modify your <code class="language-plaintext highlighter-rouge">~/.bashrc</code> by adding the following configurations.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">export </span><span class="nv">PATH</span><span class="o">=</span><span class="nv">$PATH</span>:/usr/local/cuda/bin
+<span class="nb">export </span><span class="nv">CUDADIR</span><span class="o">=</span>/usr/local/cuda
+</code></pre></div></div>
+
+<h2 id="1-image-convolution-using-opencl">1. Image convolution using OpenCL</h2>
+
+<p>Convolution is a common operation in image processing. It is used for blurring, sharpening, embossing, edge detection, and more. The image convolution process is accomplished by doing a convolution between a small matrix (which is called a <em>filter kernel</em> in image processing) and an image. You may learn more about the convolution process at <a href="https://en.wikipedia.org/wiki/Convolution">Wikipedia: Convolution</a>.</p>
+
+<p>Figure 1 shows an illustration of the concept of applying a convolution filter to a specific pixel, value of which is <code class="language-plaintext highlighter-rouge">3</code>. After the convolution process, the value of the pixel becomes <code class="language-plaintext highlighter-rouge">7</code>—how the resulting value is computed is illustrated on the right of the figure.</p>
+
+<p><img src="./lab6_files/101978949-f7c9f900-3c93-11eb-8cc8-9b99db425b01.png" width="400px" alt="Convolution Demo"></p>
+
+<p>Figure 1. Applying a convolution filter to the dark gray pixel of the source image (value of which is <code class="language-plaintext highlighter-rouge">3</code>).</p>
+
+<p>In this assignment, you will need to implement a GPU kernel function for convolution in OpenCL by using the zero-padding method. A serial implementation of convolution can be found in <code class="language-plaintext highlighter-rouge">serialConv()</code> in <code class="language-plaintext highlighter-rouge">serialConv.c</code>. You can refer to the implementation to port it to OpenCL. You may refer to <a href="https://www.geeksforgeeks.org/cnn-introduction-to-padding/">this article</a> to learn about the zero-padding method. Figure 2 shows an example of applying the zero-padding method to the source image (on the left) and thereby resulting a same-size, filtered output image (on the right).</p>
+
+<p><img src="./lab6_files/1_GwxhjA7-FLIRrtl__RkRgg.png" width="400px" alt="Zero Padding Visualization"></p>
+
+<p>Figure 2. Applying the zero-padding method to a source image.</p>
+
+<p>Your job is to parallelize the computation of the convolution using OpenCL. A starter code that spawns OpenCL threads is provided in function <code class="language-plaintext highlighter-rouge">hostFE()</code>, which is located in <code class="language-plaintext highlighter-rouge">hostFE.c</code>. <code class="language-plaintext highlighter-rouge">hostFE()</code> is the host front-end function that allocates memories and launches a GPU kernel, called <code class="language-plaintext highlighter-rouge">convolution()</code>, which is located in <code class="language-plaintext highlighter-rouge">kernel.cl</code>.</p>
+
+<p>Currently <code class="language-plaintext highlighter-rouge">hostFE()</code> and <code class="language-plaintext highlighter-rouge">convolution()</code> do not do any computation and return immediately. You should complete these two functions to accomplish this assignment.</p>
+
+<p>You can build the program by typing <code class="language-plaintext highlighter-rouge">make</code>, and run the program via <code class="language-plaintext highlighter-rouge">./conv</code>. Your program should read an input image from <code class="language-plaintext highlighter-rouge">input.bmp</code>, perform image convolution, and output the result image into <code class="language-plaintext highlighter-rouge">output.bmp</code>.</p>
+
+<p>You can use the following command to test your own image:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>ffmpeg -i source.png -pix_fmt gray -vf scale=600:400 destination.bmp
+</code></pre></div></div>
+
+<p>You can use a different filter kernel by adding option <code class="language-plaintext highlighter-rouge">-f N</code> when running the program (i.e., <code class="language-plaintext highlighter-rouge">./conv -f N</code>), where N is either 1 (by default), 2, or 3, and indicates which filter kernel is used. Each filter kernel is defined in a CSV file (<code class="language-plaintext highlighter-rouge">filter1.csv</code>, <code class="language-plaintext highlighter-rouge">filter2.csv</code>, or <code class="language-plaintext highlighter-rouge">filter3.csv</code>). The first line of the CSV file defines the width (or height) of the filter kernel, and the remaining lines define the values of the filter kernel.</p>
+
+<h2 id="2-requirements">2. Requirements</h2>
+
+<p>You will modify only <code class="language-plaintext highlighter-rouge">hostFE.c</code> and <code class="language-plaintext highlighter-rouge">kernel.cl</code>.</p>
+
+<p><strong>Q1 (<em>5 points</em>)</strong>: Explain your implementation. How do you optimize the performance of convolution?</p>
+
+<p><strong>[Bonus] Q2 (<em>10 points</em>)</strong>: Rewrite the program using CUDA. (1) Explain your CUDA implementation, (2) plot a chart to show the performance difference between using OpenCL and CUDA, and (3) explain the result.</p>
+
+<p>Answer the questions marked with <strong>Q1</strong> (and <strong>Q2</strong>) in a <strong>REPORT</strong> using <a href="https://hackmd.io/">HackMD</a>.
+Notice that in this assignment a higher standard will be applied when grading the quality of your report.</p>
+
+<p><strong>Note: You cannot print any message in your program.</strong></p>
+
+<h2 id="3-grading-policies">3. Grading Policies</h2>
+
+<p><strong>NO CHEATING!!</strong> You will receive no credit if you are found cheating.</p>
+
+<p>Total of 100+10%:</p>
+<ul>
+  <li>Correctness (75%): 25% for each of the three filters (<code class="language-plaintext highlighter-rouge">filter1.csv</code>, <code class="language-plaintext highlighter-rouge">filter2.csv</code>, and <code class="language-plaintext highlighter-rouge">filter3.csv</code>). The breakdown of the 25%:
+    <ul>
+      <li>10%: Your parallelized program passes the verification.</li>
+      <li>15%: The speedup over the serial version should be greater than 5.0.</li>
+    </ul>
+  </li>
+  <li>Performance (20%): Compete with your classmates. See the metric below.</li>
+  <li>Questions (5+10%).</li>
+</ul>
+
+<p>Metric:</p>
+
+<span class="MathJax_Preview" style="color: inherit;"></span><div class="MathJax_Display" style="text-align: center;"><span class="MathJax" id="MathJax-Element-1-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot; display=&quot;block&quot;&gt;&lt;mfrac&gt;&lt;mrow&gt;&lt;mi&gt;T&lt;/mi&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mi&gt;Y&lt;/mi&gt;&lt;/mrow&gt;&lt;mrow&gt;&lt;mi&gt;T&lt;/mi&gt;&lt;mo&gt;&amp;#x2212;&lt;/mo&gt;&lt;mi&gt;F&lt;/mi&gt;&lt;/mrow&gt;&lt;/mfrac&gt;&lt;mo&gt;&amp;#x00D7;&lt;/mo&gt;&lt;mn&gt;60&lt;/mn&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;&amp;#x0025;&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mtext&gt;if&lt;/mtext&gt;&lt;mspace width=&quot;thickmathspace&quot; /&gt;&lt;mi&gt;Y&lt;/mi&gt;&lt;mo&gt;&amp;lt;&lt;/mo&gt;&lt;mi&gt;T&lt;/mi&gt;&lt;mo&gt;+&lt;/mo&gt;&lt;mrow&gt;&lt;mo&gt;{&lt;/mo&gt;&lt;mtable columnalign=&quot;left left&quot; rowspacing=&quot;.2em&quot; columnspacing=&quot;1em&quot; displaystyle=&quot;false&quot;&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mn&gt;20&lt;/mn&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;&amp;#x0025;&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mtext&gt;if&lt;/mtext&gt;&lt;mspace width=&quot;thickmathspace&quot; /&gt;&lt;mi&gt;Y&lt;/mi&gt;&lt;mo&gt;&amp;lt;&lt;/mo&gt;&lt;mi&gt;F&lt;/mi&gt;&lt;mo&gt;&amp;#x00D7;&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd /&gt;&lt;/mtr&gt;&lt;mtr&gt;&lt;mtd&gt;&lt;mn&gt;40&lt;/mn&gt;&lt;mi mathvariant=&quot;normal&quot;&gt;&amp;#x0025;&lt;/mi&gt;&lt;mo&gt;,&lt;/mo&gt;&lt;mtext&gt;if&lt;/mtext&gt;&lt;mspace width=&quot;thickmathspace&quot; /&gt;&lt;mi&gt;Y&lt;/mi&gt;&lt;mo&gt;&amp;lt;&lt;/mo&gt;&lt;mi&gt;F&lt;/mi&gt;&lt;mo&gt;&amp;#x00D7;&lt;/mo&gt;&lt;mn&gt;1.5&lt;/mn&gt;&lt;/mtd&gt;&lt;/mtr&gt;&lt;/mtable&gt;&lt;mo fence=&quot;true&quot; stretchy=&quot;true&quot; symmetric=&quot;true&quot;&gt;&lt;/mo&gt;&lt;/mrow&gt;&lt;/math&gt;" role="presentation" style="text-align: center; position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-1" style="width: 26.487em; display: inline-block;"><span style="display: inline-block; position: relative; width: 21.355em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(2.248em, 1021.36em, 5.959em, -999.998em); top: -4.351em; left: 0em;"><span class="mrow" id="MathJax-Span-2"><span class="mfrac" id="MathJax-Span-3"><span style="display: inline-block; position: relative; width: 2.843em; height: 0px; margin-right: 0.14em; margin-left: 0.14em;"><span style="position: absolute; clip: rect(3.164em, 1002.71em, 4.218em, -999.998em); top: -4.671em; left: 50%; margin-left: -1.372em;"><span class="mrow" id="MathJax-Span-4"><span class="mi" id="MathJax-Span-5" style="font-family: MathJax_Math-italic;">T<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.14em;"></span></span><span class="mo" id="MathJax-Span-6" style="font-family: MathJax_Main; padding-left: 0.231em;">−</span><span class="mi" id="MathJax-Span-7" style="font-family: MathJax_Math-italic; padding-left: 0.231em;">Y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.186em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span><span style="position: absolute; clip: rect(3.164em, 1002.71em, 4.218em, -999.998em); top: -3.297em; left: 50%; margin-left: -1.327em;"><span class="mrow" id="MathJax-Span-8"><span class="mi" id="MathJax-Span-9" style="font-family: MathJax_Math-italic;">T<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.14em;"></span></span><span class="mo" id="MathJax-Span-10" style="font-family: MathJax_Main; padding-left: 0.231em;">−</span><span class="mi" id="MathJax-Span-11" style="font-family: MathJax_Math-italic; padding-left: 0.231em;">F<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.094em;"></span></span></span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span><span style="position: absolute; clip: rect(0.873em, 1002.84em, 1.194em, -999.998em); top: -1.281em; left: 0em;"><span style="display: inline-block; overflow: hidden; vertical-align: 0em; border-top: 1.3px solid; width: 2.843em; height: 0px;"></span><span style="display: inline-block; width: 0px; height: 1.056em;"></span></span></span></span><span class="mo" id="MathJax-Span-12" style="font-family: MathJax_Main; padding-left: 0.231em;">×</span><span class="mn" id="MathJax-Span-13" style="font-family: MathJax_Main; padding-left: 0.231em;">60</span><span class="mi" id="MathJax-Span-14" style="font-family: MathJax_Main;">%</span><span class="mo" id="MathJax-Span-15" style="font-family: MathJax_Main;">,</span><span class="mtext" id="MathJax-Span-16" style="font-family: MathJax_Main; padding-left: 0.186em;">if</span><span class="mspace" id="MathJax-Span-17" style="height: 0em; vertical-align: 0em; width: 0.277em; display: inline-block; overflow: hidden;"></span><span class="mi" id="MathJax-Span-18" style="font-family: MathJax_Math-italic;">Y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.186em;"></span></span><span class="mo" id="MathJax-Span-19" style="font-family: MathJax_Main; padding-left: 0.277em;">&lt;</span><span class="mi" id="MathJax-Span-20" style="font-family: MathJax_Math-italic; padding-left: 0.277em;">T<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.14em;"></span></span><span class="mo" id="MathJax-Span-21" style="font-family: MathJax_Main; padding-left: 0.231em;">+</span><span class="mrow" id="MathJax-Span-22" style="padding-left: 0.231em;"><span class="mo" id="MathJax-Span-23" style="vertical-align: 1.973em;"><span style="display: inline-block; position: relative; width: 0.873em; height: 0px;"><span style="position: absolute; font-family: MathJax_Size4; top: -3.068em; left: 0em;">⎧<span style="display: inline-block; width: 0px; height: 3.989em;"></span></span><span style="position: absolute; font-family: MathJax_Size4; top: -1.464em; left: 0em;">⎩<span style="display: inline-block; width: 0px; height: 3.989em;"></span></span><span style="position: absolute; font-family: MathJax_Size4; top: -2.014em; left: 0em;">⎨<span style="display: inline-block; width: 0px; height: 3.989em;"></span></span></span></span><span class="mtable" id="MathJax-Span-24"><span style="display: inline-block; position: relative; width: 8.525em; height: 0px; margin-right: 0.186em; margin-left: 0.186em;"><span style="position: absolute; clip: rect(2.339em, 1008.48em, 5.959em, -999.998em); top: -4.351em; left: 0em;"><span style="display: inline-block; position: relative; width: 8.525em; height: 0px;"><span style="position: absolute; clip: rect(3.118em, 1007.7em, 4.309em, -999.998em); top: -5.13em; left: 0em;"><span class="mtd" id="MathJax-Span-25"><span class="mrow" id="MathJax-Span-26"><span class="mn" id="MathJax-Span-27" style="font-family: MathJax_Main;">20</span><span class="mi" id="MathJax-Span-28" style="font-family: MathJax_Main;">%</span><span class="mo" id="MathJax-Span-29" style="font-family: MathJax_Main;">,</span><span class="mtext" id="MathJax-Span-30" style="font-family: MathJax_Main; padding-left: 0.186em;">if</span><span class="mspace" id="MathJax-Span-31" style="height: 0em; vertical-align: 0em; width: 0.277em; display: inline-block; overflow: hidden;"></span><span class="mi" id="MathJax-Span-32" style="font-family: MathJax_Math-italic;">Y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.186em;"></span></span><span class="mo" id="MathJax-Span-33" style="font-family: MathJax_Main; padding-left: 0.277em;">&lt;</span><span class="mi" id="MathJax-Span-34" style="font-family: MathJax_Math-italic; padding-left: 0.277em;">F<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.094em;"></span></span><span class="mo" id="MathJax-Span-35" style="font-family: MathJax_Main; padding-left: 0.231em;">×</span><span class="mn" id="MathJax-Span-36" style="font-family: MathJax_Main; padding-left: 0.231em;">2</span></span></span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span><span style="position: absolute; clip: rect(3.851em, 1000em, 4.126em, -999.998em); top: -3.938em; left: 0em;"><span class="mtd" id="MathJax-Span-37"><span class="mrow" id="MathJax-Span-38"></span></span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span><span style="position: absolute; clip: rect(3.118em, 1008.48em, 4.309em, -999.998em); top: -2.747em; left: 0em;"><span class="mtd" id="MathJax-Span-39"><span class="mrow" id="MathJax-Span-40"><span class="mn" id="MathJax-Span-41" style="font-family: MathJax_Main;">40</span><span class="mi" id="MathJax-Span-42" style="font-family: MathJax_Main;">%</span><span class="mo" id="MathJax-Span-43" style="font-family: MathJax_Main;">,</span><span class="mtext" id="MathJax-Span-44" style="font-family: MathJax_Main; padding-left: 0.186em;">if</span><span class="mspace" id="MathJax-Span-45" style="height: 0em; vertical-align: 0em; width: 0.277em; display: inline-block; overflow: hidden;"></span><span class="mi" id="MathJax-Span-46" style="font-family: MathJax_Math-italic;">Y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.186em;"></span></span><span class="mo" id="MathJax-Span-47" style="font-family: MathJax_Main; padding-left: 0.277em;">&lt;</span><span class="mi" id="MathJax-Span-48" style="font-family: MathJax_Math-italic; padding-left: 0.277em;">F<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.094em;"></span></span><span class="mo" id="MathJax-Span-49" style="font-family: MathJax_Main; padding-left: 0.231em;">×</span><span class="mn" id="MathJax-Span-50" style="font-family: MathJax_Main; padding-left: 0.231em;">1.5</span></span></span><span style="display: inline-block; width: 0px; height: 3.989em;"></span></span></span><span style="display: inline-block; width: 0px; height: 4.355em;"></span></span></span></span><span class="mo" id="MathJax-Span-51"></span></span></span><span style="display: inline-block; width: 0px; height: 4.355em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -1.872em; border-left: 0px solid; width: 0px; height: 4.321em;"></span></span></nobr><span class="MJX_Assistive_MathML MJX_Assistive_MathML_Block" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mfrac><mrow><mi>T</mi><mo>−</mo><mi>Y</mi></mrow><mrow><mi>T</mi><mo>−</mo><mi>F</mi></mrow></mfrac><mo>×</mo><mn>60</mn><mi mathvariant="normal">%</mi><mo>,</mo><mtext>if</mtext><mspace width="thickmathspace"></mspace><mi>Y</mi><mo>&lt;</mo><mi>T</mi><mo>+</mo><mrow><mo>{</mo><mtable columnalign="left left" rowspacing=".2em" columnspacing="1em" displaystyle="false"><mtr><mtd><mn>20</mn><mi mathvariant="normal">%</mi><mo>,</mo><mtext>if</mtext><mspace width="thickmathspace"></mspace><mi>Y</mi><mo>&lt;</mo><mi>F</mi><mo>×</mo><mn>2</mn></mtd></mtr><mtr><mtd></mtd></mtr><mtr><mtd><mn>40</mn><mi mathvariant="normal">%</mi><mo>,</mo><mtext>if</mtext><mspace width="thickmathspace"></mspace><mi>Y</mi><mo>&lt;</mo><mi>F</mi><mo>×</mo><mn>1.5</mn></mtd></mtr></mtable><mo fence="true" stretchy="true" symmetric="true"></mo></mrow></math></span></span></div><script type="math/tex; mode=display" id="MathJax-Element-1">\frac{T-Y}{T-F} \times 60\%, \text{if} \; Y < T +
+\begin{cases}
+  20\%, \text{if} \; Y < F \times 2 \\\\
+  40\%, \text{if} \; Y < F \times 1.5
+\end{cases}</script>
+
+<p class=" has-jax has-jax has-jax">where <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-2-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;Y&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-52" style="width: 0.965em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.781em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.56em, 1000.78em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-53"><span class="mi" id="MathJax-Span-54" style="font-family: MathJax_Math-italic;">Y<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.186em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 0.969em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>Y</mi></math></span></span><script type="math/tex" id="MathJax-Element-2">Y</script> and <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-3-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;F&lt;/mi&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-55" style="width: 0.919em; display: inline-block;"><span style="display: inline-block; position: relative; width: 0.735em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.56em, 1000.74em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-56"><span class="mi" id="MathJax-Span-57" style="font-family: MathJax_Math-italic;">F<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.094em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 0.969em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>F</mi></math></span></span><script type="math/tex" id="MathJax-Element-3">F</script> indicate the execution time of your program and the fastest program, respectively, and <span class="MathJax_Preview" style="color: inherit;"></span><span class="MathJax" id="MathJax-Element-4-Frame" tabindex="0" data-mathml="&lt;math xmlns=&quot;http://www.w3.org/1998/Math/MathML&quot;&gt;&lt;mi&gt;T&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mi&gt;F&lt;/mi&gt;&lt;mo&gt;&amp;#x00D7;&lt;/mo&gt;&lt;mn&gt;1.5&lt;/mn&gt;&lt;/math&gt;" role="presentation" style="position: relative;"><nobr aria-hidden="true"><span class="math" id="MathJax-Span-58" style="width: 6.601em; display: inline-block;"><span style="display: inline-block; position: relative; width: 5.318em; height: 0px; font-size: 124%;"><span style="position: absolute; clip: rect(1.56em, 1005.27em, 2.522em, -999.998em); top: -2.38em; left: 0em;"><span class="mrow" id="MathJax-Span-59"><span class="mi" id="MathJax-Span-60" style="font-family: MathJax_Math-italic;">T<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.14em;"></span></span><span class="mo" id="MathJax-Span-61" style="font-family: MathJax_Main; padding-left: 0.277em;">=</span><span class="mi" id="MathJax-Span-62" style="font-family: MathJax_Math-italic; padding-left: 0.277em;">F<span style="display: inline-block; overflow: hidden; height: 1px; width: 0.094em;"></span></span><span class="mo" id="MathJax-Span-63" style="font-family: MathJax_Main; padding-left: 0.231em;">×</span><span class="mn" id="MathJax-Span-64" style="font-family: MathJax_Main; padding-left: 0.231em;">1.5</span></span><span style="display: inline-block; width: 0px; height: 2.385em;"></span></span></span><span style="display: inline-block; overflow: hidden; vertical-align: -0.054em; border-left: 0px solid; width: 0px; height: 0.969em;"></span></span></nobr><span class="MJX_Assistive_MathML" role="presentation"><math xmlns="http://www.w3.org/1998/Math/MathML"><mi>T</mi><mo>=</mo><mi>F</mi><mo>×</mo><mn>1.5</mn></math></span></span><script type="math/tex" id="MathJax-Element-4">T = F \times 1.5</script>.</p>
+
+<h2 id="4-evaluation-platform">4. Evaluation Platform</h2>
+
+<p>Your program should be able to run on UNIX-like OS platforms. We will evaluate your programs on the workstations dedicated for this course. You can access these workstations by <code class="language-plaintext highlighter-rouge">ssh</code> with the following information.</p>
+
+<p>The workstations are based on Ubuntu 18.04 with Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz processors and <strong>GeForce GTX 1060 6GB</strong>. <code class="language-plaintext highlighter-rouge">g++-10</code>, <code class="language-plaintext highlighter-rouge">clang++-11</code>, <code class="language-plaintext highlighter-rouge">cuda10.2</code>, and <code class="language-plaintext highlighter-rouge">OpenCL1.1</code> have been installed.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>IP</th>
+      <th>Port</th>
+      <th>User Name</th>
+      <th>Password</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>140.113.215.195</td>
+      <td>37077, 37093, 37094</td>
+      <td>{student_id}</td>
+      <td>{Provided by TA}</td>
+    </tr>
+  </tbody>
+</table>
+
+<blockquote>
+  <p><strong><em>Notice</em></strong>: We will only use one of the ports above to grade the assignments.</p>
+</blockquote>
+
+<blockquote>
+  <p><strong><em>ATTENTION: Never touch 37095. It is for NIS and NFS.</em></strong></p>
+</blockquote>
+
+<p>Login example:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>ssh &lt;student_id&gt;@140.113.215.195 <span class="nt">-p</span> &lt;port&gt;
+</code></pre></div></div>
+
+<p>You can use the testing script <code class="language-plaintext highlighter-rouge">test_hw6</code> to check your answer <em>for reference only</em>. Run <code class="language-plaintext highlighter-rouge">test_hw6</code> in a dictionary that contains your <code class="language-plaintext highlighter-rouge">HW6_XXXXXXX.zip</code> file on the workstation.</p>
+
+<h2 id="5-submission">5. Submission</h2>
+
+<p>All your files should be organized in the following hierarchy and zipped into a <code class="language-plaintext highlighter-rouge">.zip</code> file, named <code class="language-plaintext highlighter-rouge">HW6_xxxxxxx.zip</code>, where <code class="language-plaintext highlighter-rouge">xxxxxxx</code> is your student ID.</p>
+
+<p>Directory structure inside the zipped file:</p>
+<ul>
+  <li><code class="language-plaintext highlighter-rouge">HW6_xxxxxxx.zip</code> (root)
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">kernel.cl</code></li>
+      <li><code class="language-plaintext highlighter-rouge">hostFE.c</code></li>
+      <li><code class="language-plaintext highlighter-rouge">url.txt</code></li>
+    </ul>
+  </li>
+</ul>
+
+<p>Notice that you just need to provide the URL of your HackMD report in <code class="language-plaintext highlighter-rouge">url.txt</code>, and enable the write permission for someone who knows the URL so that TAs can give you feedback directly in your report.</p>
+
+<p>Zip the file:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>zip HW6_XXXXXXX.zip kernel.cl hostFE.c url.txt
+</code></pre></div></div>
+
+<p>Be sure to upload your zipped file to new E3 e-Campus system by the due date.</p>
+
+<p><strong>You will get <em>NO POINT</em> if your ZIP’s name is wrong or the ZIP hierarchy is incorrect.</strong></p>
+
+<p><strong>Due Date: 23:59, January 7, Thursday, 2021</strong></p>
+
+<h2 id="6-references">6. References</h2>
+
+<ul>
+  <li><a href="https://developer.nvidia.com/opencl">NVIDIA OpenCL SDK Code Samples</a></li>
+  <li><a href="https://www.eriksmistad.no/getting-started-with-opencl-and-gpu-computing/">Getting started with OpenCL and GPU Computing</a></li>
+</ul>
+
+
+      <footer class="site-footer">
+        
+          <span class="site-footer-owner"><a href="https://github.com/nctu-sslab/PP-f20">PP-f20</a> is maintained by <a href="https://github.com/nctu-sslab">nctu-sslab</a>.</span>
+        
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com/">GitHub Pages</a>.</span>
+      </footer>
+    </section>
+
+    
+  
+
+<div id="5835ddda-442b-4bee-9d13-1d18e28eed54-bottom"></div><div style="position: absolute; width: 0px; height: 0px; overflow: hidden; padding: 0px; border: 0px; margin: 0px;"><div id="MathJax_Font_Test" style="position: absolute; visibility: hidden; top: 0px; left: 0px; width: auto; min-width: 0px; max-width: none; padding: 0px; border: 0px; margin: 0px; white-space: nowrap; text-align: left; text-indent: 0px; text-transform: none; line-height: normal; letter-spacing: normal; word-spacing: normal; font-size: 40px; font-weight: normal; font-style: normal; font-family: MathJax_Size4, sans-serif;"></div></div></body><div id="shopback-app" style="z-index: 2147483647 !important; display: block !important;"></div></html>
