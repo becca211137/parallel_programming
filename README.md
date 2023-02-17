@@ -23,12 +23,12 @@
 The purpose of this assignment is to familiarize yourself with MPI programming.
 
 ## Assignment V: CUDA Programming
--  Part 1: parallelize the computation of the images using CUDA
-The purpose of this assignment is to familiarize yourself with CUDA programming.
+- Parallelize the computation of the images using CUDA
+- The purpose of this assignment is to familiarize yourself with CUDA programming.
 
 ## Assignment VI: OpenCL Programming
 - Image convolution using OpenCL
-The purpose of this assignment is to familiarize yourself with OpenCL programming.
+- The purpose of this assignment is to familiarize yourself with OpenCL programming.
 
 ## Final project: Implement Parallelization on Image Stitching
 在手機普及的年代，利用手機拍一張相片很容易，但如果要融合多張相片的話，就需要image stitching的方法，而在過程中，會使用到名為RANSAC (RANdom SAmple Consensus) 的演算法，是一個歷史悠久且能夠廣泛運用在各個領域上的演算法，也是本次報告的首要目標。
